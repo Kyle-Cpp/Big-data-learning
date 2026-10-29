@@ -1,0 +1,164 @@
+﻿# league	team	modelIdx	lastMatchDate   (modelIdx = 索引于 model_clubs_v1.json teams[].idx; lastMatchDate = 该队最后出场日期, 2025-26 赛季内即现役)
+Ligue 1	Ajaccio	0	2023-06-03
+Ligue 1	Ajaccio GFCO	1	2016-05-14
+La Liga	Alaves	2	2026-05-23
+La Liga	Almeria	3	2024-05-25
+Ligue 1	Amiens	4	2020-03-06
+Ligue 1	Angers	5	2026-05-17
+Premier League	Arsenal	6	2026-05-24
+Premier League	Aston Villa	7	2026-05-24
+Serie A	Atalanta	8	2026-05-22
+La Liga	Ath Bilbao	9	2026-05-23
+La Liga	Ath Madrid	10	2026-05-24
+Bundesliga	Augsburg	11	2026-05-16
+Ligue 1	Auxerre	12	2026-05-17
+La Liga	Barcelona	13	2026-05-23
+Ligue 1	Bastia	14	2017-05-20
+Bundesliga	Bayern Munich	15	2026-05-16
+Serie A	Benevento	16	2021-05-23
+La Liga	Betis	17	2026-05-23
+Bundesliga	Bielefeld	18	2022-05-14
+Bundesliga	Bochum	19	2025-05-17
+Serie A	Bologna	20	2026-05-23
+Ligue 1	Bordeaux	21	2022-05-21
+Premier League	Bournemouth	22	2026-05-24
+Premier League	Brentford	23	2026-05-24
+Serie A	Brescia	24	2020-08-01
+Ligue 1	Brest	25	2026-05-17
+Premier League	Brighton	26	2026-05-24
+Premier League	Burnley	27	2026-05-24
+La Liga	Cadiz	28	2024-05-25
+Ligue 1	Caen	29	2019-05-24
+Serie A	Cagliari	30	2026-05-24
+Premier League	Cardiff	31	2019-05-12
+Serie A	Carpi	32	2016-05-15
+La Liga	Celta	33	2026-05-23
+Premier League	Chelsea	34	2026-05-24
+Serie A	Chievo	35	2019-05-25
+Ligue 1	Clermont	36	2024-05-19
+Serie A	Como	37	2026-05-24
+Serie A	Cremonese	38	2026-05-24
+Serie A	Crotone	39	2021-05-22
+Premier League	Crystal Palace	40	2026-05-24
+Bundesliga	Darmstadt	41	2024-05-18
+Ligue 1	Dijon	42	2021-05-23
+Bundesliga	Dortmund	43	2026-05-16
+La Liga	Eibar	44	2021-05-22
+Bundesliga	Ein Frankfurt	45	2026-05-16
+La Liga	Elche	46	2026-05-23
+Serie A	Empoli	47	2025-05-25
+La Liga	Espanol	48	2026-05-23
+Premier League	Everton	49	2026-05-24
+Bundesliga	FC Koln	50	2026-05-16
+Serie A	Fiorentina	51	2026-05-22
+Bundesliga	Fortuna Dusseldorf	52	2020-06-27
+Bundesliga	Freiburg	53	2026-05-16
+Serie A	Frosinone	54	2024-05-26
+Premier League	Fulham	55	2026-05-24
+Serie A	Genoa	56	2026-05-24
+La Liga	Getafe	57	2026-05-23
+La Liga	Girona	58	2026-05-23
+La Liga	Granada	59	2024-05-24
+Bundesliga	Greuther Furth	60	2022-05-14
+Ligue 1	Guingamp	61	2019-05-24
+Bundesliga	Hamburg	62	2026-05-16
+Bundesliga	Hannover	63	2019-05-18
+Bundesliga	Heidenheim	64	2026-05-16
+Bundesliga	Hertha	65	2023-05-27
+Bundesliga	Hoffenheim	66	2026-05-16
+Bundesliga	Holstein Kiel	67	2025-05-17
+Premier League	Huddersfield	68	2019-05-12
+La Liga	Huesca	69	2021-05-22
+Premier League	Hull	70	2017-05-21
+Bundesliga	Ingolstadt	71	2017-05-20
+Serie A	Inter	72	2026-05-23
+Premier League	Ipswich	73	2025-05-25
+Serie A	Juventus	74	2026-05-24
+La Liga	La Coruna	75	2018-05-20
+La Liga	Las Palmas	76	2025-05-24
+Serie A	Lazio	77	2026-05-23
+Ligue 1	Le Havre	78	2026-05-17
+Serie A	Lecce	79	2026-05-24
+Premier League	Leeds	80	2026-05-24
+La Liga	Leganes	81	2025-05-24
+Premier League	Leicester	82	2025-05-25
+Ligue 1	Lens	83	2026-05-17
+La Liga	Levante	84	2026-05-23
+Bundesliga	Leverkusen	85	2026-05-16
+Ligue 1	Lille	86	2026-05-17
+Premier League	Liverpool	87	2026-05-24
+Ligue 1	Lorient	88	2026-05-17
+Premier League	Luton	89	2024-05-19
+Ligue 1	Lyon	90	2026-05-17
+Bundesliga	M'Gladbach	91	2026-05-16
+Bundesliga	Mainz	92	2026-05-16
+La Liga	Malaga	93	2018-05-19
+La Liga	Mallorca	94	2026-05-23
+Premier League	Man City	95	2026-05-24
+Premier League	Man United	96	2026-05-24
+Ligue 1	Marseille	97	2026-05-17
+Ligue 1	Metz	98	2026-05-17
+Premier League	Middlesbrough	99	2017-05-21
+Serie A	Milan	100	2026-05-24
+Ligue 1	Monaco	101	2026-05-17
+Ligue 1	Montpellier	102	2025-05-17
+Serie A	Monza	103	2025-05-24
+Ligue 1	Nancy	104	2017-05-20
+Ligue 1	Nantes	105	2026-05-17
+Serie A	Napoli	106	2026-05-24
+Premier League	Newcastle	107	2026-05-24
+Ligue 1	Nice	108	2026-05-17
+Ligue 1	Nimes	109	2021-05-23
+Premier League	Norwich	110	2022-05-22
+Premier League	Nott'm Forest	111	2026-05-24
+Bundesliga	Nurnberg	112	2019-05-18
+La Liga	Osasuna	113	2026-05-23
+La Liga	Oviedo	114	2026-05-23
+Bundesliga	Paderborn	115	2020-06-27
+Serie A	Palermo	116	2017-05-28
+Ligue 1	Paris FC	117	2026-05-17
+Ligue 1	Paris SG	118	2026-05-17
+Serie A	Parma	119	2026-05-24
+Serie A	Pescara	120	2017-05-28
+Serie A	Pisa	121	2026-05-23
+Bundesliga	RB Leipzig	122	2026-05-16
+La Liga	Real Madrid	123	2026-05-23
+Ligue 1	Reims	124	2025-05-17
+Ligue 1	Rennes	125	2026-05-17
+Serie A	Roma	126	2026-05-24
+Serie A	Salernitana	127	2024-05-25
+Serie A	Sampdoria	128	2023-06-04
+Serie A	Sassuolo	129	2026-05-24
+Bundesliga	Schalke 04	130	2023-05-27
+La Liga	Sevilla	131	2026-05-23
+Premier League	Sheffield United	132	2024-05-19
+La Liga	Sociedad	133	2026-05-23
+Premier League	Southampton	134	2025-05-25
+La Liga	Sp Gijon	135	2017-05-20
+Serie A	Spal	136	2020-08-02
+Serie A	Spezia	137	2023-06-04
+Ligue 1	St Etienne	138	2025-05-17
+Bundesliga	St Pauli	139	2026-05-16
+Premier League	Stoke	140	2018-05-13
+Ligue 1	Strasbourg	141	2026-05-17
+Bundesliga	Stuttgart	142	2026-05-16
+Premier League	Sunderland	143	2026-05-24
+Premier League	Swansea	144	2018-05-13
+Serie A	Torino	145	2026-05-24
+Premier League	Tottenham	146	2026-05-24
+Ligue 1	Toulouse	147	2026-05-17
+Ligue 1	Troyes	148	2023-06-03
+Serie A	Udinese	149	2026-05-24
+Bundesliga	Union Berlin	150	2026-05-16
+La Liga	Valencia	151	2026-05-23
+La Liga	Valladolid	152	2025-05-24
+La Liga	Vallecano	153	2026-05-23
+Serie A	Venezia	154	2025-05-25
+Serie A	Verona	155	2026-05-24
+La Liga	Villarreal	156	2026-05-24
+Premier League	Watford	157	2022-05-22
+Bundesliga	Werder Bremen	158	2026-05-16
+Premier League	West Brom	159	2021-05-23
+Premier League	West Ham	160	2026-05-24
+Bundesliga	Wolfsburg	161	2026-05-16
+Premier League	Wolves	162	2026-05-24

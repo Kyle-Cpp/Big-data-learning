@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:"Microsoft YaHei","PingFang SC",sans-serif; background:#fff; }
+  .canvas { position:relative; width:1760px; height:1000px; }
+
+  .title { position:absolute; top:18px; left:0; right:0; text-align:center;
+           font-size:26px; font-weight:700; color:#0f172a; letter-spacing:.5px; }
+  .subtitle { position:absolute; top:56px; left:0; right:0; text-align:center;
+              font-size:15px; color:#64748b; }
+
+  .ent { position:absolute; background:#fff; border:2.5px solid #0369a1;
+         border-radius:10px; box-shadow:0 2px 8px rgba(15,23,42,.10); overflow:hidden; }
+  .ent .hd { background:#0369a1; color:#fff; font-size:17px; font-weight:700;
+             text-align:center; padding:9px 12px; letter-spacing:.5px; }
+  .ent .bd { padding:10px 14px; }
+  .ent .pk { font-size:12px; color:#0369a1; font-style:italic; margin-bottom:7px;
+             border-bottom:1px dashed #cbd5e1; padding-bottom:6px; }
+  .ent .at { font-size:13.5px; color:#334155; line-height:1.75; white-space:nowrap; }
+
+  .ent.core { border-color:#0369a1; }
+  .ent.core .hd { background:#0369a1; }
+
+  .ent.dim { border-color:#7c3aed; }
+  .ent.dim .hd { background:#7c3aed; }
+  .ent.dim .pk { color:#7c3aed; }
+
+  .ent.sys { border-color:#16a34a; }
+  .ent.sys .hd { background:#16a34a; }
+  .ent.sys .pk { color:#16a34a; }
+
+  svg.wires { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
+  .lbl { font-size:15px; fill:#334155; font-weight:700; paint-order:stroke; stroke:#fff; stroke-width:4px; stroke-linejoin:round; }
+  .lblbg { fill:#ffffff; stroke:#e2e8f0; stroke-width:1; }
+
+  .legend { position:absolute; left:60px; bottom:30px; font-size:13px; color:#475569;
+            border:1px solid #e2e8f0; border-radius:8px; padding:10px 16px; background:#f8fafc; }
+  .legend b { color:#0f172a; }
+  .legend span { display:inline-block; margin-right:22px; }
+  .dot { display:inline-block; width:11px; height:11px; border-radius:3px;
+         margin-right:6px; vertical-align:-1px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="title">FootPred 概念数据模型</div>
+  <div class="subtitle">核心实体 · 主要联系 · 基数（实体层面，不含物理字段类型）</div>
+
+  <svg class="wires">
+    <defs>
+      <marker id="m" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
+        <path d="M0,0 L12,5 L0,10 z" fill="#475569"/></marker>
+      <marker id="mg" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
+        <path d="M0,0 L12,5 L0,10 z" fill="#15803d"/></marker>
+      <marker id="mp" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto">
+        <path d="M0,0 L12,5 L0,10 z" fill="#7c3aed"/></marker>
+    </defs>
+
+    <!-- 联赛 → 球队 -->
+    <path d="M170,332 L170,426" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#m)"/>
+    <text class="lbl" x="178" y="356">1</text>
+    <text class="lbl" x="178" y="414">N</text>
+
+    <!-- 球队 → 球员 -->
+    <path d="M170,580 L170,696" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#m)"/>
+    <text class="lbl" x="178" y="606">1</text>
+    <text class="lbl" x="178" y="686">N</text>
+
+    <!-- 球队 → 比赛（主场） -->
+    <path d="M280,470 L464,458" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#m)"/>
+    <text class="lbl" x="286" y="462">1</text>
+    <text class="lbl" x="446" y="452">N</text>
+    <text class="lbl" x="336" y="446" fill="#64748b">主场</text>
+
+    <!-- 球队 → 比赛（客场） -->
+    <path d="M280,552 L464,546" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#m)"/>
+    <text class="lbl" x="286" y="544">1</text>
+    <text class="lbl" x="446" y="540">N</text>
+    <text class="lbl" x="336" y="572" fill="#64748b">客场</text>
+
+    <!-- 球员 ↔ 比赛（出场/射门，M:N） -->
+    <path d="M280,760 L390,760 L390,660 L566,660 L566,624" stroke="#7c3aed" stroke-width="2.2"
+          stroke-dasharray="7 4" fill="none" marker-end="url(#mp)"/>
+    <text class="lbl" x="288" y="782" fill="#6d28d9">M</text>
+    <text class="lbl" x="578" y="652" fill="#6d28d9">N</text>
+    <text class="lbl" x="404" y="700" fill="#6d28d9">出场 / 射门</text>
+
+    <!-- 比赛 → 预测 -->
+    <path d="M690,500 L780,500 L780,300 L854,300" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#m)"/>
+    <text class="lbl" x="698" y="494">1</text>
+    <text class="lbl" x="786" y="286">N</text>
+    <text class="lbl" x="700" y="340" fill="#64748b">被预测</text>
+
+    <!-- 比赛 → 分析结果 -->
+    <path d="M690,580 L800,580 L800,690 L934,690" stroke="#475569" stroke-width="2.4" fill="none" marker-end="url(#m)"/>
+    <text class="lbl" x="698" y="574">1</text>
+    <text class="lbl" x="806" y="700">N</text>
+    <text class="lbl" x="700" y="620" fill="#64748b">被分析</text>
+
+    <!-- 作业 → 预测 -->
+    <path d="M1380,290 L1194,290" stroke="#15803d" stroke-width="2.4" fill="none" marker-end="url(#mg)"/>
+    <text class="lbl" x="1368" y="282" fill="#15803d">1</text>
+    <text class="lbl" x="1206" y="282" fill="#15803d">N</text>
+
+    <!-- 作业 → 分析结果 -->
+    <path d="M1380,360 L1420,360 L1420,700 L1248,700" stroke="#15803d" stroke-width="2.4" fill="none" marker-end="url(#mg)"/>
+    <text class="lbl" x="1388" y="352" fill="#15803d">1</text>
+    <text class="lbl" x="1256" y="694" fill="#15803d">N</text>
+  </svg>
+
+  <!-- 联赛 -->
+  <div class="ent core" style="left:60px;  top:180px; width:220px;">
+    <div class="hd">联赛</div>
+    <div class="bd">
+      <div class="pk">标识：联赛编号</div>
+      <div class="at">联赛名称<br/>所属国家<br/>赛事级别</div>
+    </div>
+  </div>
+
+  <!-- 球队 -->
+  <div class="ent core" style="left:60px;  top:430px; width:220px;">
+    <div class="hd">球队</div>
+    <div class="bd">
+      <div class="pk">标识：球队编号</div>
+      <div class="at">球队名称<br/>所属联赛<br/>主场城市</div>
+    </div>
+  </div>
+
+  <!-- 球员 -->
+  <div class="ent core" style="left:60px;  top:700px; width:220px;">
+    <div class="hd">球员</div>
+    <div class="bd">
+      <div class="pk">标识：球员编号</div>
+      <div class="at">球员姓名<br/>惯用位置<br/>国籍</div>
+    </div>
+  </div>
+
+  <!-- 比赛 -->
+  <div class="ent core" style="left:470px; top:420px; width:220px;">
+    <div class="hd">比赛</div>
+    <div class="bd">
+      <div class="pk">标识：比赛编号</div>
+      <div class="at">比赛日期<br/>主队进球数<br/>客队进球数<br/>比赛结果<br/>是否中立场</div>
+    </div>
+  </div>
+
+  <!-- 预测 -->
+  <div class="ent core" style="left:860px; top:200px; width:330px;">
+    <div class="hd">比赛预测</div>
+    <div class="bd">
+      <div class="pk">标识：预测编号</div>
+      <div class="at">主胜概率 / 平局概率 / 客胜概率<br/>主队期望进球 / 客队期望进球<br/>比分概率矩阵<br/>预测结果 / 真实结果 / 是否命中</div>
+    </div>
+  </div>
+
+  <!-- 分析结果 -->
+  <div class="ent core" style="left:940px; top:620px; width:300px;">
+    <div class="hd">分析结果</div>
+    <div class="bd">
+      <div class="pk">标识：结果编号</div>
+      <div class="at">分析类别（冠军/主场/时段…）<br/>统计维度（联赛/赛季/队伍）<br/>指标名称 / 指标数值<br/>样本记录数</div>
+    </div>
+  </div>
+
+  <!-- 计算作业 -->
+  <div class="ent sys" style="left:1380px; top:240px; width:300px;">
+    <div class="hd">计算作业</div>
+    <div class="bd">
+      <div class="pk">标识：作业编号</div>
+      <div class="at">所属模块<br/>作业状态<br/>模型版本<br/>执行进度（含多轮迭代）</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <b>图例</b>&nbsp;&nbsp;
+    <span><i class="dot" style="background:#0369a1"></i>业务实体</span>
+    <span><i class="dot" style="background:#7c3aed"></i>多对多联系</span>
+    <span><i class="dot" style="background:#16a34a"></i>系统实体</span>
+    <span>1 : N&nbsp;一对多</span>
+    <span>M : N&nbsp;多对多</span>
+  </div>
+</div>
+</body>
+</html>

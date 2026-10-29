@@ -1,0 +1,46 @@
+# ---------- 构建产物 ----------
+backend/target/
+backend/*.jar.original
+*.class
+dependency-reduced-pom.xml
+
+# 成品 JAR 不入库（21MB 二进制，放 GitHub Release 更合适）。
+# 需要 JAR 时分两种方式获得：
+#   1. 从 Release 下载
+#   2. 本地构建：cd backend && mvn clean package
+target/
+!README.md
+
+# ---------- 本地配置（含密码） ----------
+backend/deploy/config/footpred.env
+application-local.properties
+
+# ---------- IDE ----------
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# ---------- 系统 ----------
+.DS_Store
+Thumbs.db
+
+# ---------- 日志 ----------
+logs/
+*.log
+
+# ---------- 前端 ----------
+frontend/node_modules/
+frontend/.cache/
+npm-debug.log*
+
+# ---------- 数据（体积大，按需单独分发） ----------
+# 示例结果与模型保留，便于开箱即用；以下大文件不入库
+data/raw-five-leagues/
+data/statsbomb/
+*.tar.gz
+
+# ---------- 第三方大数据集 ----------
+StatsBomb-open-data/
