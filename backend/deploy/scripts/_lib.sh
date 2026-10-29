@@ -11,6 +11,27 @@ ROOT_DIR="$(cd "$_LIB_DIR/.." && pwd)"
 ENV_FILE="${FOOTPRED_ENV_FILE:-$ROOT_DIR/config/footpred.env}"
 
 # ---------------------------------------------------------------------------
+# 环境变量兜底
+# ---------------------------------------------------------------------------
+# 以非交互方式执行（cron、CI、bash script.sh）时不会加载 ~/.bashrc，
+# JAVA_HOME 与 hadoop 可能不在 PATH 里，导致 hdfs dfs -test 静默失败、
+# 所有路径被误判为「缺失」。这里补一次，保证判断结果只取决于真实状态。
+if [ -n "${JAVA_HOME:-}" ] && [ -d "$JAVA_HOME/bin" ]; then
+  case ":$PATH:" in *":$JAVA_HOME/bin:"*) ;; *) export PATH="$JAVA_HOME/bin:$PATH" ;; esac
+fi
+for _h in "${HADOOP_HOME:-}" /training/hadoop-3.3.6 /opt/module/hadoop-3.3.6; do
+  if [ -n "$_h" ] && [ -x "$_h/bin/hdfs" ]; then
+    case ":$PATH:" in *":$_h/bin:"*) ;; *) export PATH="$_h/bin:$PATH" ;; esac
+    export HADOOP_HOME="$_h"
+    if [ -z "${HADOOP_CONF_DIR:-}" ] && [ -d "$_h/etc/hadoop" ]; then
+      export HADOOP_CONF_DIR="$_h/etc/hadoop"
+    fi
+    break
+  fi
+done
+unset _h
+
+# ---------------------------------------------------------------------------
 # 加载配置
 # ---------------------------------------------------------------------------
 if [[ ! -f "$ENV_FILE" ]]; then
