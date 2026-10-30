@@ -45,6 +45,47 @@ Windows 用户也可以直接双击根目录的 `start.bat`；Linux/macOS 用 `b
 
 停止服务：在终端按 `Ctrl + C`。
 
+### 可选：启用作业管理（需外部 MySQL）
+
+`start.bat` 是只读模式，数据来自 `data/export` 下的 TSV 文件，**不需要数据库**。
+「作业管理」页面在只读模式下返回 404，因为相关接口受
+`footpred.mysql.enabled` 控制。
+
+要查看历史作业列表，需要连一台已装 MySQL 的 Linux 机器（课程环境为 CentOS 7 虚拟机），
+双击根目录的 `start-with-db.bat`。它会：
+
+1. 从环境变量读取连接参数，缺省值如下表；
+2. 先用 TCP 探测数据库端口，连不上就直接给出排查提示，不让 Spring 崩在启动阶段；
+3. 带 `--footpred.mysql.enabled=true --footpred.job.enabled=true` 启动。
+
+| 环境变量 | 缺省值 | 说明 |
+|---|---|---|
+| `FP_DB_HOST` | `192.168.86.135` | 虚拟机 IP，变了就要改 |
+| `FP_DB_PORT` | `3306` | |
+| `FP_DB_NAME` | `footpred` | |
+| `FP_DB_USER` | `footpred` | |
+| `FP_DB_PASSWORD` | 课程虚拟机内置口令 | 设置该变量即可覆盖 |
+
+改 IP 不用编辑脚本，在 cmd 里先设变量再启动即可：
+
+```bat
+set FP_DB_HOST=192.168.86.140
+start-with-db.bat
+```
+
+**三个前提**，缺一不可：
+
+1. 虚拟机上 MySQL 已启动（`systemctl status mysqld`）；
+2. 已执行过建库建表：`mysql -u root -p < backend/deploy/sql/schema.sql`；
+3. 远程账号有库权限。若报 `Table ... doesn't exist` 但表确实存在，
+   检查 `SHOW GRANTS FOR 'footpred'@'%'`，需要 `ALL PRIVILEGES ON footpred.*`。
+
+> 注意：`footpred@127.0.0.1` 有库权限不代表 `footpred@%` 也有。从 Windows 连入走的是
+> 后者，两者是不同账号。
+
+即使连上数据库，**从前端提交新作业仍会失败**，因为后端要调用 `hadoop jar`，
+而 Windows 本机没有 Hadoop 客户端。作业列表可以看，提交请用虚拟机侧。
+
 ---
 
 ## 目录结构
@@ -70,7 +111,10 @@ FootPred-hadoop/
 │   │   ├── module2/international-rf-v1/ 国家队随机森林（56 维）
 │   │   └── module3/player-xg-v1/        LR-xG（16 系数）
 │   └── export/                      结果文件（前端「真实接口」模式读取）
-└── docs/                            数据字典、E-R 图
+├── docs/                            数据字典、E-R 图
+├── start.bat                        Windows 启动（只读模式，无需数据库）
+├── start-with-db.bat                Windows 启动（连外部 MySQL，启用作业管理）
+└── start.sh                         Linux/macOS 启动
 ```
 
 ---
