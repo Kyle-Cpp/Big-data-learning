@@ -1,0 +1,9 @@
+# Fixture file format: homeTeam <TAB> awayTeam <TAB> neutral(0|1)
+# NOTE: demonstration pairings for format illustration only - NOT a real fixture list.
+# Team names must match the spelling in model.json (identical to results.csv).
+Argentina	France	1
+Brazil	Germany	1
+Spain	England	1
+Japan	Morocco	1
+France	Brazil	0
+England	Australia	1

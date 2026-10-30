@@ -12,13 +12,438 @@
     },
     {
       "path": "README.md",
-      "bytes": 4929,
-      "sha256": "1e75fe5a0c5fe8113e820116cd3cf191f393d486e9cb6a1c49f93cf033a290d2"
+      "bytes": 5276,
+      "sha256": "acfcbcc7e0dd2328938ed2269d725978980d5769bc614e361eeeea667e5c8ca9"
+    },
+    {
+      "path": "algorithms/module4/README.md",
+      "bytes": 24638,
+      "sha256": "ca11f811ff416acff0a4b2071c4c0b0c2a58859665df777b0bc2bd196017c8c0"
+    },
+    {
+      "path": "algorithms/module4/fixtures_demo.tsv",
+      "bytes": 336,
+      "sha256": "39d763c3448869eb26afbf771ee15e721ec1b13d8e6c1d9e1406e6abb37f640b"
+    },
+    {
+      "path": "algorithms/module4/pom.xml",
+      "bytes": 3748,
+      "sha256": "12a0632955ea81798b8f2f31b31dfbffcf75852098338a3ce530f2088e823e32"
+    },
+    {
+      "path": "algorithms/module4/scripts/convert_leagues.py",
+      "bytes": 3295,
+      "sha256": "3c5a56fa426722d8ff8bbb5b91ac5e4667d50846b4f97cdc6464dac290c193c7"
+    },
+    {
+      "path": "algorithms/module4/scripts/sweep_stage1.sh",
+      "bytes": 1499,
+      "sha256": "bfa04a7780d85920d4de26538c7ec0f875798a19755bbc3bd55c943d646ee5f6"
+    },
+    {
+      "path": "algorithms/module4/scripts/sweep_stage2.sh",
+      "bytes": 1663,
+      "sha256": "d07ba1f9fb3aafbc25381018ef6010ee6a8e25aa520256045362ae299c706aa2"
+    },
+    {
+      "path": "algorithms/module4/scripts/validate_module4.sh",
+      "bytes": 669,
+      "sha256": "2e661d0d6619670767b65ebf4a25e7e4ca02e6ad559283c213bfa3a07e15ac0f"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/DCModel.java",
+      "bytes": 10728,
+      "sha256": "26c2b0601878fc07aca6eda6e208db4a627faf2a701dabdd718e23e47392d4bb"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/DCObjective.java",
+      "bytes": 2884,
+      "sha256": "e3bb34297ec5db684d668fb18dfcd2b126ac053dac4eca65fca6d52f9d9e2d55"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/DCtau.java",
+      "bytes": 3189,
+      "sha256": "a06904eb694d2507fde365c8debd8a5c83dc77fbad8c878e67b9fbe080708e5c"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/FilterTeeStream.java",
+      "bytes": 3033,
+      "sha256": "a51526abac5bd5064bc6188f2e570bdf37b8bb9ea40c34742d6578e8fe89bbe2"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/IoUtils.java",
+      "bytes": 6918,
+      "sha256": "74bf311fc63a5c0d1131e0fd2799f3f340cfb5aa6202b61276950c305cdfdf14"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/LeagueTable.java",
+      "bytes": 4008,
+      "sha256": "7eaf2b65a66bc2cab31fe75cc3e1f4cf8cda74d5ac3608de0f9c43f43306a07f"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/MatchParser.java",
+      "bytes": 2253,
+      "sha256": "5c119815173f973e3ff8c9640f420a39c1d29eeeb7358115d44fcad42d937a21"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/PoissonSampler.java",
+      "bytes": 2048,
+      "sha256": "5c852567a0efed8b9ce5298dbd6e17b0130f51ee5a70b8a875760720718f8c58"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/RawMatch.java",
+      "bytes": 1264,
+      "sha256": "681eff17fa7a9c0cbdfa533076f1fe7359a8a067524cb111f75e4e259c7fe15c"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/RpsMetrics.java",
+      "bytes": 699,
+      "sha256": "86d22f086b0757066c3fd553b992df799538084d48282577bd772d9d92702898"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/ScoreMatrixCalculator.java",
+      "bytes": 2620,
+      "sha256": "e239283878e3117258eb36522b5426218b77a208c8c86a3f4fcb5eb37273d44f"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/SeasonSimulator.java",
+      "bytes": 3231,
+      "sha256": "211e1e081e80efad4f4217d65788805278f4805e7fda66ef44472b7cb07ba355"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/Shrinkage.java",
+      "bytes": 2279,
+      "sha256": "db61c82d9e1eb5f48b98b153781280231f647e007a35ed23c02cc27920f52093"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/SimAggregate.java",
+      "bytes": 3845,
+      "sha256": "7d9baad061981b15bd620f3aa0beff8bcc264f93ad280dd56fbc2e7ad33858b3"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/SimContext.java",
+      "bytes": 12156,
+      "sha256": "722b377df8bb4b6d7ed0e3d2d095ae50e941a8032934dc05ba0f4fd5d2d1c57c"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/TeamRegistry.java",
+      "bytes": 2605,
+      "sha256": "e1ac9aefd2eb5f5e5f7f534f19909cce7d3c284aba02aff73103f147b5aec979"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/TimeDecay.java",
+      "bytes": 1396,
+      "sha256": "0dac5789242bb7745cb92133fe1f999f0175c0c34e00f7403a46265c9a8d754c"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/VectorWritable.java",
+      "bytes": 2292,
+      "sha256": "d86626b472a3cb195daf88de81234bc371d4d537e130b106276f10ad0901d650"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/common/WholeFileInputFormat.java",
+      "bytes": 3403,
+      "sha256": "5ec2f34e061775c722dc76a826269ff789332c1641992cbfe4444b784d085de0"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/driver/FootPredDriver.java",
+      "bytes": 85299,
+      "sha256": "8f000c2046da3ebdcf38b771a51ad1b4122012d8dc96e30683570f2e0c41522b"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/future/CutoffTableJob.java",
+      "bytes": 3310,
+      "sha256": "74ab1fb1fe30940d3350ae143ba0ad9e2f57cc771db45b294a2a30cb02100bab"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/future/FixtureIntensityJob.java",
+      "bytes": 2050,
+      "sha256": "baae25f1864bd3afa19a37aef58d908791e22fa4a1855c240f1b0911708d2873"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/future/FutureSeasonPipeline.java",
+      "bytes": 11289,
+      "sha256": "e2f5051b30a93a4e5f374cd402f40ff1798fc7e5a57ae514bf4a4af331f1f430"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/future/ReplayEvaluationJob.java",
+      "bytes": 6130,
+      "sha256": "59aedfdefcd45e34c389886d8deb6e2d6efe910d94a9b828895cdc45b60aea38"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/future/ReplaySupport.java",
+      "bytes": 2856,
+      "sha256": "6392b80d1a0e46edad62c96a08f40f7826b8ed830c73b35189d60d85acc53c9f"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/future/SeasonPrepareJob.java",
+      "bytes": 4363,
+      "sha256": "83385de690c58ac44ce6d27a66134f84925e3b0fd30070cbf1ec5cbfc85556ac"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/BaselineEvalMapper.java",
+      "bytes": 6988,
+      "sha256": "3ae29eac645770c3bdac7458b4a2aa3abd3187339b6a543d191956344f79bf94"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/BaselineStatsMapper.java",
+      "bytes": 2708,
+      "sha256": "0efacde4cc9b637242cf0f6dff547ee7d47330ec451fe3f61b50609b5d0b72d7"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/CareerCsvMapper.java",
+      "bytes": 7448,
+      "sha256": "469fc77634a6ffe7ae9eb85d420af8accb9ce2463cdba1e3ef84f7d0b4a6a2f0"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/DCMapper.java",
+      "bytes": 4870,
+      "sha256": "ba74cf9280941b5f5ee97f4de0c8196131b05a9f7c8ead711c679f69e6550a04"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/EvalMapper.java",
+      "bytes": 5368,
+      "sha256": "2f0fc450553478e05cb800cc66aa965bc00d78168738b582b316c061dd9b2dba"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/LeagueStyleMapper.java",
+      "bytes": 5187,
+      "sha256": "e50fa77ffd5adbd3ea8943796cda9868376a94c2526cbc6fb1b064f5ec43d1ac"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/LineupFlattenMapper.java",
+      "bytes": 4410,
+      "sha256": "1feb5f4f483be249b8c377c0d6155c683b93004a40a18f5eb160430cff839538"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/MessiEventsMapper.java",
+      "bytes": 4508,
+      "sha256": "5b7b15b6fb5ff6c4221bb3b197cae8b9787a4889e8b2cfb058db694f47e31bae"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/MonteCarloMapper.java",
+      "bytes": 4873,
+      "sha256": "b309aea6ee8c46570788a0d3f3e4127148440796643826c224534cbbb59a1888"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/NationalityMapper.java",
+      "bytes": 1528,
+      "sha256": "b54cd5d47e452198d16859bb0a7c221308ad64b293a16df409a59efa17644ae1"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/ScoreDiffMapper.java",
+      "bytes": 2802,
+      "sha256": "fc845cb2c9d52606f0a3f6e611f26e4e6bd9b673b82e8b59b868d95972eabce0"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/ScoreMatrixMapper.java",
+      "bytes": 2924,
+      "sha256": "8afa7bbe310f1e6f0ffe695c38efb6e4491c8b9cdab98907a0d47a8e39e741fd"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/TeamRegistryMapper.java",
+      "bytes": 1672,
+      "sha256": "706b98cf558069b7a6c0944e93e5da1997a7787cab5fb6dd0ac0006c0ee6c457"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/TeamWeightMapper.java",
+      "bytes": 2403,
+      "sha256": "308919cd225ac09efc5f8b6b66d0a7fd2573912382608518fbb5096a7807356f"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/mappers/TrainingDataMapper.java",
+      "bytes": 8297,
+      "sha256": "24da2241cd9aa45db5ac5a5157432c45032fb839ac9e86a3616d574f96f8f249"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/optim/LBFGS.java",
+      "bytes": 4727,
+      "sha256": "6711db094b07e614f51b3c45c6972e278e30dbd3cc38d5770cb365bd79315f7e"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/BaselineEvalReducer.java",
+      "bytes": 2773,
+      "sha256": "d5966adb70b5eba0c972eeb1e523777a18bc7f2167471df785fb6fc8e7d82468"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/BaselineStatsReducer.java",
+      "bytes": 2146,
+      "sha256": "35d5d6cf22065b615ed2a4dc85d2f28b4309dce58caa1272e9b92bf027ff4573"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/CareerReducer.java",
+      "bytes": 1042,
+      "sha256": "b0267619e78e7e478257f99d6e0ef24958cc6536a4af0e3e6310c40801297dbf"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/DCGradientReducer.java",
+      "bytes": 1802,
+      "sha256": "48a4e19bf5c75ed3305099ec546faa855ed25d009536ba7e77d6c5251084888a"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/EvalReducer.java",
+      "bytes": 2910,
+      "sha256": "492591abe8a884c0e00893e7652cd275e21894ad34ffb2afebaa133ecdb22e9b"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/LeagueStyleReducer.java",
+      "bytes": 2282,
+      "sha256": "a3d9d8c74814d73d1400845ee5e033a2855a4e4a87069cf06331e0baedbb9c9f"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/MessiEventsReducer.java",
+      "bytes": 1363,
+      "sha256": "f1f073a3d3e2c57d965e90fe5b430cfaaba9d269242f2628acb78df7d597bb4a"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/MonteCarloReducer.java",
+      "bytes": 2791,
+      "sha256": "de31648dfafaa99ed003e532bc1e4a704161835989249046edd07452f0c58fee"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/NationalityReducer.java",
+      "bytes": 5562,
+      "sha256": "1542fca2bdd5d72de68bf18da9adc425d4be607ae854e0a812abb8f2d275cbfb"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/ScoreDiffReducer.java",
+      "bytes": 2490,
+      "sha256": "0d281da05242ee969cc1f1d2b566bc2bcf86e7605050410b076b90b74444cbfb"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/TeamRegistryReducer.java",
+      "bytes": 1038,
+      "sha256": "3a958ce894d709ca4798502ec26b9ee8f934bdf0513dc954ed056a1761594c56"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/TeamWeightReducer.java",
+      "bytes": 1512,
+      "sha256": "9ddd804dfbd17148c834408a60044c515c37f3f7943f07160bdfd06cee1110ad"
+    },
+    {
+      "path": "algorithms/module4/src/main/java/com/footpred/reducers/VectorSumCombiner.java",
+      "bytes": 1684,
+      "sha256": "045735909ef182d5f50ea73bed0b2950d89771fcabc335842f96761c12930e0b"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/DCModelTest.java",
+      "bytes": 5185,
+      "sha256": "7de4a80990489a5de1c04ed48235ef98dc0388b73cfc7580bf2f9cde36cd4726"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/DCObjectiveTest.java",
+      "bytes": 3994,
+      "sha256": "f29ca8b8eae3e3921e0477bfb5c0355498c6e767ba36c5de7c333ba8e16cba19"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/DCtauTest.java",
+      "bytes": 3680,
+      "sha256": "64d511d9c07fa54933996d452ed12c11594dcfa615f831ee89366e18bd7ec18f"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/FilterTeeStreamTest.java",
+      "bytes": 4804,
+      "sha256": "53e81be6810e9a9f6c87cac24b42a18d8c7f25d05da1ddc018921827d8eda30d"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/LeagueTableTest.java",
+      "bytes": 3664,
+      "sha256": "cbaf3f409d2641fea358c0280509b27a561dbc3f7a8013424d574bef8ec566d9"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/MatchParserTest.java",
+      "bytes": 3289,
+      "sha256": "35e19db9a816f57e8d169b6e9c0a857f3717e0ac80ab59844aab8e5a0f94fe02"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/PoissonSamplerTest.java",
+      "bytes": 1923,
+      "sha256": "94afb60c5d4a3a7dd0051b6b9f75d4cc5f68737309214ed5f3e4237229d82ba3"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/RpsMetricsTest.java",
+      "bytes": 1625,
+      "sha256": "b859dedada0b04b55c599904dd2459388a057c155c9b02203fe29a9de51ca53c"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/ScoreMatrixCalculatorTest.java",
+      "bytes": 375,
+      "sha256": "5ad5dfe231bbb60ab47c7f7b5e05d460cd38cdd20cd972d39909c06afa998723"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/SeasonSimulatorTest.java",
+      "bytes": 9351,
+      "sha256": "e1e19b247061af1ddd59df85a8ed2f95eec540329a5b6f116ae638c2147dafb5"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/ShrinkageTest.java",
+      "bytes": 3323,
+      "sha256": "97ff35737af25d3821551a58fdbec6b7a4b66e93e6b19a63e6936233408a1779"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/SimContextTest.java",
+      "bytes": 5042,
+      "sha256": "68b3589664090e360700de3a1734b34a67358e70ccde8a631cedd8ac6768e01c"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/TimeDecayTest.java",
+      "bytes": 1178,
+      "sha256": "95b98ba1869f7e95c29a14fc5747c01b1276453458ddb84e1bea6a58f91da3e9"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/common/VectorWritableTest.java",
+      "bytes": 2303,
+      "sha256": "e84e3f9169c526636cc6431df1af45e9b7e02116ee87ddb21a21eb78f278793e"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/driver/OfflineConvergenceTest.java",
+      "bytes": 11006,
+      "sha256": "d051d8228a36672a832d012943109f80d47b9520c7725bb6ee9ed82acfd92093"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/future/ReplayContractsTest.java",
+      "bytes": 2256,
+      "sha256": "aa2fc48f619135f4c3299633fe5a92f0bf94b8fe1832858de7bb3c02b9f6b98d"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/mappers/CareerCsvMapperTest.java",
+      "bytes": 3943,
+      "sha256": "2f1928052e3b8b01eea8859d458785282e6d1202682f3eed5f37771fc76154d9"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/mappers/CategoryTest.java",
+      "bytes": 2523,
+      "sha256": "c2020ed55f0ef3e4a9d35624e286254c7a728b46b2def0ea62563a9c766f14d7"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/mappers/LeagueStyleMapperTest.java",
+      "bytes": 3572,
+      "sha256": "204ad257d43200f9763ea4d022effd4d3aac08d59b3341f57e0a058f5976c0be"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/mappers/LineupFlattenMapperTest.java",
+      "bytes": 3644,
+      "sha256": "c2c6d8a265e8e90faf6c73702378f6f9e1e51a9c2f457e4e6c004e28cf65da6c"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/mappers/ScoreDiffMapperTest.java",
+      "bytes": 973,
+      "sha256": "0fb4f21714db8eea0a3d614cf317c77db09d2ae919bf03b24f56ebd471523221"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/optim/LBFGSTest.java",
+      "bytes": 4733,
+      "sha256": "3ece2608d9b0330e2167444afed4de7467882b5ccd2c37b7904eb13c83f2004d"
+    },
+    {
+      "path": "algorithms/module4/src/test/java/com/footpred/reducers/NationalityReducerTest.java",
+      "bytes": 2869,
+      "sha256": "ec7941fe1f31da61f8f6e7e2382d63e233ee7e8e8ab00777e5520788c1f4cad3"
     },
     {
       "path": "application-local.properties.example",
-      "bytes": 380,
-      "sha256": "b58b007defb58ebda628186272d4b11122a60d8f7a34ede87086eb75f91a94a2"
+      "bytes": 496,
+      "sha256": "e0c7e69f0988a72c8412f8a6c726043a05b5f542b511e1b270aa9993fca6b734"
     },
     {
       "path": "backend/deploy/RUNBOOK.md",
@@ -29,6 +454,11 @@
       "path": "backend/deploy/VERIFICATION.md",
       "bytes": 13294,
       "sha256": "5d760e33368029a009b99dbe7d564d9ec6b6df425243f0983ebf0db31c630c07"
+    },
+    {
+      "path": "backend/deploy/application-cluster.properties.example",
+      "bytes": 1020,
+      "sha256": "87ec8cad1e0dc657b11ff2d28233792dfc7bace68d225429a16ff5aa10b02e3c"
     },
     {
       "path": "backend/deploy/config/footpred.env.example",
@@ -77,8 +507,8 @@
     },
     {
       "path": "backend/deploy/scripts/31-submit-job.sh",
-      "bytes": 6268,
-      "sha256": "837a2af8fcb40956235a524e65e172eeae88e81d8e753be9b559f9c9159cc22d"
+      "bytes": 6089,
+      "sha256": "946875256f7053710c36f8e95350b090e8146948be03333fc272fc34c8edf2d1"
     },
     {
       "path": "backend/deploy/scripts/40-host-check.sh",
@@ -141,9 +571,14 @@
       "sha256": "fc5953667cf0b10be8c050403be37d45fded11305da3f1b795e588d312fd5201"
     },
     {
+      "path": "backend/src/main/java/com/footpred/backend/api/DatasetController.java",
+      "bytes": 3108,
+      "sha256": "6a45a7f9d48f0540ee4ccb60221684ac2b95b52fd6e61b532c73640432be7690"
+    },
+    {
       "path": "backend/src/main/java/com/footpred/backend/api/ImportController.java",
-      "bytes": 8128,
-      "sha256": "6f647b007f854748ad2e5991e0ddf04f346c23e787947d2bf5cea9197b39a8af"
+      "bytes": 8306,
+      "sha256": "7ff58cb839970b69a33abb1e5a77ae96a501c894efab00065c64547b04712c62"
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/api/JobController.java",
@@ -157,13 +592,13 @@
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/api/ResultController.java",
-      "bytes": 23513,
-      "sha256": "2604624731a2c815a874fd512dbb1c5052ad4cb7424c8cd237bf9701edd79c1b"
+      "bytes": 24640,
+      "sha256": "520602da2636646fd4ecc6227024cc0eb4344243a4a0c6944834fb54bae25ed7"
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/catalog/JobCatalog.java",
-      "bytes": 15331,
-      "sha256": "fd6c9ffbafad96c58e31556dc8b8496d9d319fee28113e132dbcfc161f7b9f06"
+      "bytes": 16286,
+      "sha256": "eaf983b467acb0044945de46f47ffac98ef1d02299058855d7bde94bc6e623ea"
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/catalog/JobSpec.java",
@@ -172,8 +607,8 @@
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/config/JobConfiguration.java",
-      "bytes": 1154,
-      "sha256": "b99ab89c947cfa6bc76badd17183379fcf891ef6ebfe6a0a41c1ea0faf71e398"
+      "bytes": 1208,
+      "sha256": "beede7db7056ff0cfc6ac925855b1f56be068608864812d930e9b911703d4ea5"
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/config/MysqlConfiguration.java",
@@ -241,6 +676,11 @@
       "sha256": "46178173fdb6533fe4e4b9da096b4279770bb73dbab567ccc64ce5d4e52a414e"
     },
     {
+      "path": "backend/src/main/java/com/footpred/backend/job/ClusterGateway.java",
+      "bytes": 5029,
+      "sha256": "f96a9e242915067e616e9a68ba53fb2c2947afa2c24ea4f7f89f712429571d62"
+    },
+    {
       "path": "backend/src/main/java/com/footpred/backend/job/CommandBuilder.java",
       "bytes": 7699,
       "sha256": "099c372e6ecb683955905a9b5b758eb9361fd31446305e5929181b5c6efea2e9"
@@ -252,13 +692,13 @@
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/job/JobService.java",
-      "bytes": 16905,
-      "sha256": "53af38215b67f733a7047d9e75fe920dadc218e8ce5dcccf130b6075219c0f64"
+      "bytes": 17688,
+      "sha256": "1b2d1f4dc78cc475fb202899a236e9ab0b2e34480db6f11767ac8123c3206503"
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/job/LocalProcessJobExecutor.java",
-      "bytes": 5001,
-      "sha256": "766fa11a8e82f6c08557ddc0b4af52c037143852d3b3862ab60fc9afb837c8be"
+      "bytes": 5260,
+      "sha256": "13242b6d51da579f734d1ed02faeb38ec15af47a8a9ea5974f43dc814847272f"
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/job/YarnMonitor.java",
@@ -267,8 +707,8 @@
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/parser/EvaluationParser.java",
-      "bytes": 3944,
-      "sha256": "f4a73f7a073e87ff049958c93ec4942713b9376c9528c93e5fdd95bcb4bea5dc"
+      "bytes": 5398,
+      "sha256": "d6a99cad2e5723a39d32ab893bd31d917f4c4f9f6287fec750a603b92888a67e"
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/parser/HistoryParser.java",
@@ -332,8 +772,8 @@
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/service/ResultImportService.java",
-      "bytes": 11482,
-      "sha256": "ebaa3f19e0a844118712f54bda29359b4fffb06ba5b9fb3647a6068288a1557d"
+      "bytes": 12297,
+      "sha256": "c7a7c5516068ecc2a3128e41892ccde825bc39628318878a64a1e184a5b55f57"
     },
     {
       "path": "backend/src/main/java/com/footpred/backend/service/ResultReader.java",
@@ -342,8 +782,8 @@
     },
     {
       "path": "backend/src/main/resources/application.properties",
-      "bytes": 3981,
-      "sha256": "18d4d8e58ecf88cba4dfd80325b2452a4644c74af6df02f5fed021ad490cc39f"
+      "bytes": 4368,
+      "sha256": "193734077bcb6bd80e812053ef6024f5dcf5154eccf6677d37a3fefd6077ff65"
     },
     {
       "path": "backend/src/main/resources/schema-mysql.sql",
@@ -352,13 +792,13 @@
     },
     {
       "path": "backend/src/main/resources/static/app.js",
-      "bytes": 58959,
-      "sha256": "3af6b5022a96668a857966813018dde2e6b6a04b00901a1a0d789e420a180020"
+      "bytes": 63615,
+      "sha256": "a8bbeaefe65a8509adb17b2727e11e88b9958641959997254eaf0ecd0a9931a1"
     },
     {
       "path": "backend/src/main/resources/static/data.js",
-      "bytes": 27928,
-      "sha256": "d7721953f33e145d607bf374b1c9313b4a3a236d4570d9f3b358f94e6de4f122"
+      "bytes": 28920,
+      "sha256": "f215e3996157433b56042e586d1860acebb71e3f96480471ac04e68bdd5babc2"
     },
     {
       "path": "backend/src/main/resources/static/favicon.svg",
@@ -367,8 +807,8 @@
     },
     {
       "path": "backend/src/main/resources/static/i18n.js",
-      "bytes": 29983,
-      "sha256": "8d5ada3ad73a8585999467aca42a2568b0d454ce1f43a24a536eeccdb60bad74"
+      "bytes": 31319,
+      "sha256": "7cf3300d0151140d4a7c89e456a73a0377a4388f997557ef46aeefeb0ecb03b8"
     },
     {
       "path": "backend/src/main/resources/static/index.html",
@@ -381,9 +821,14 @@
       "sha256": "4aa88f29430d1e2cd26dd0f267bfc65b7247072d80dca1a9fe625fa3dedda547"
     },
     {
+      "path": "backend/src/test/java/com/footpred/backend/api/DatasetApiTest.java",
+      "bytes": 2313,
+      "sha256": "ea69b0c7263df9257938dd2a829a92ddab115189fd9ffbcda70e92ba79e5833b"
+    },
+    {
       "path": "backend/src/test/java/com/footpred/backend/api/ImportApiIntegrationTest.java",
-      "bytes": 8273,
-      "sha256": "003041a4967bdda24cf983034947254bf7fc5de1d0720ca9bcad39278902ee5b"
+      "bytes": 8957,
+      "sha256": "357bd99aad14fac3d9d730c6932e9ff92c9153512a5e238fbeec6d1829cd2a38"
     },
     {
       "path": "backend/src/test/java/com/footpred/backend/api/JobSubmissionApiTest.java",
@@ -392,8 +837,8 @@
     },
     {
       "path": "backend/src/test/java/com/footpred/backend/api/ResultApiIntegrationTest.java",
-      "bytes": 12960,
-      "sha256": "7f7f1eeb2c70f92a26694d398461e9936a80cece5a337f092d36127a45a2e03a"
+      "bytes": 13741,
+      "sha256": "889a814e50055c33454591be4b28dd3cd52853b83bbac39c533658fde6c7c56c"
     },
     {
       "path": "backend/src/test/java/com/footpred/backend/config/DeploymentConfigBindingTest.java",
@@ -406,19 +851,24 @@
       "sha256": "d2d6652f173133b87580c3ba7d534e4c70b03242bf4812d6d36f805599acec32"
     },
     {
+      "path": "backend/src/test/java/com/footpred/backend/job/ClusterGatewayTest.java",
+      "bytes": 1467,
+      "sha256": "5a5b5e6e722cdfc3a7dece56505d8cfa83862f78d0a834fd620c96db56e2c552"
+    },
+    {
       "path": "backend/src/test/java/com/footpred/backend/job/CommandBuilderTest.java",
       "bytes": 10002,
       "sha256": "f0e27d3d56753e91f56337624f7498eb3703671f2970213abe20831f454028a0"
     },
     {
       "path": "backend/src/test/java/com/footpred/backend/job/JobServiceTest.java",
-      "bytes": 12736,
-      "sha256": "9ec53aad417f802aeb174c914ca85cd21d1456cdf8ad025b44240df12722b7e1"
+      "bytes": 14628,
+      "sha256": "8db0f30409a5b49d2207664c52a853a26055242228a4f00a303fcf608cfc2767"
     },
     {
       "path": "backend/src/test/java/com/footpred/backend/parser/EvaluationParserTest.java",
-      "bytes": 4912,
-      "sha256": "2506853197c252eaf870f5397c09a239e6dd29efec7e5090b43ea1415e247002"
+      "bytes": 5534,
+      "sha256": "6d21fd3b23030347836d4054cc0a1628b072cb8a843464b17567df922df04192"
     },
     {
       "path": "backend/src/test/java/com/footpred/backend/parser/HistoryParserTest.java",
@@ -484,6 +934,11 @@
       "path": "backend/src/test/resources/fixtures/evaluation/evaluation-validation.tsv",
       "bytes": 395,
       "sha256": "0fd7a66c4f273b32fd2d1ab80cf2717219c5b5bf7bbee8d8c6b75d8c47e176ae"
+    },
+    {
+      "path": "backend/src/test/resources/fixtures/module4-evaluation.tsv",
+      "bytes": 960,
+      "sha256": "55a29fd4bcab85ddfbf9c56a4d5e6524a28d4b141e9c91b58c173ed55c6c4fe4"
     },
     {
       "path": "backend/src/test/resources/fixtures/p4-4-player-predictions-sample.tsv",
@@ -746,6 +1201,31 @@
       "sha256": "c2b0d9b3561926fef195db7b29e7effa0bfb25b3761ae4ad120b9385731bfb25"
     },
     {
+      "path": "data/export/runs/module4-fivejobs-20261030/evaluation.tsv",
+      "bytes": 960,
+      "sha256": "55a29fd4bcab85ddfbf9c56a4d5e6524a28d4b141e9c91b58c173ed55c6c4fe4"
+    },
+    {
+      "path": "data/export/runs/module4-fivejobs-20261030/job_manifest.tsv",
+      "bytes": 355,
+      "sha256": "d6abdc0c922ed8832f6608043725f9b7d6f6968477f3f0d86986900bd948398d"
+    },
+    {
+      "path": "data/export/runs/module4-fivejobs-20261030/provenance.json",
+      "bytes": 450,
+      "sha256": "addef8693c3ad031831d8d63b6a217f4e74b5f8400678a4acef1e4a431b717e6"
+    },
+    {
+      "path": "data/export/runs/module4-fivejobs-20261030/real_final_table.tsv",
+      "bytes": 3501,
+      "sha256": "91e49e70d9b3cba385fb81ddb3bfdf3276380812b763df718e111191d30c6a27"
+    },
+    {
+      "path": "data/export/runs/module4-fivejobs-20261030/simulation.tsv",
+      "bytes": 21694,
+      "sha256": "c6f9cfb8515384382d2ee73555514d10f63c016cc9e550239244af69ada17ab5"
+    },
+    {
       "path": "data/export/runs/p63-093438-goal-minutes.tsv",
       "bytes": 12390,
       "sha256": "1b73e5c884810e851e2a6f41bdcc78b213196d9adf71f0cab7ee661777651707"
@@ -887,8 +1367,8 @@
     },
     {
       "path": "docs/GITHUB_UPDATE_20261030.md",
-      "bytes": 2518,
-      "sha256": "09f62e0232365c82aabd1dbd42eb03f672a5a0d440c1db16a3aa40d1fb08da3d"
+      "bytes": 2793,
+      "sha256": "6d5185ee5bde3117b83ecf6fd4175636f429c6ee075c01850d7ef78c84b0b387"
     },
     {
       "path": "docs/MODULE1_FIX_20261030.md",
@@ -901,9 +1381,19 @@
       "sha256": "5f43128b1f8845d4ce1d4cf18c1cf4d4068f5627c4887d6ccffbb55cc93c4946"
     },
     {
+      "path": "docs/MODULE4_FIVE_JOBS_20261030.md",
+      "bytes": 5768,
+      "sha256": "7f57faafeded2865202a498d7aec8a02962768c84bb91b2773dee45a4825ed94"
+    },
+    {
       "path": "docs/MODULE5_FIX_20261030.md",
       "bytes": 3225,
       "sha256": "dbdf092ba43f72c4e4987ab7a16413de1ff9dc02fce94ce8940ca2933872c0ea"
+    },
+    {
+      "path": "docs/WEB_DATASET_UPLOAD_MR.md",
+      "bytes": 5591,
+      "sha256": "7864b71ce6dbd0aa1db62c35813e56579c0c774182fa75f9a710b3271cb640ea"
     },
     {
       "path": "docs/figures/er-conceptual.png",
@@ -926,6 +1416,11 @@
       "sha256": "5997df37e807f5b42cf5c310201cc2c81727176b7bff6186d3b8b776b62231b3"
     },
     {
+      "path": "docs/figures/module4-fivejobs-partner.png",
+      "bytes": 1872750,
+      "sha256": "8d13dd3b27c01e4eb1154d5a08de3219dc7d2ad91081775c0a0e58442f7e61c7"
+    },
+    {
       "path": "frontend/.gitignore",
       "bytes": 38,
       "sha256": "e8976552b3c9a41e108117dfda317ac6b6e7a4f0a735fce5697b5ebe198f096a"
@@ -937,13 +1432,13 @@
     },
     {
       "path": "frontend/dist/app.js",
-      "bytes": 58959,
-      "sha256": "3af6b5022a96668a857966813018dde2e6b6a04b00901a1a0d789e420a180020"
+      "bytes": 63615,
+      "sha256": "a8bbeaefe65a8509adb17b2727e11e88b9958641959997254eaf0ecd0a9931a1"
     },
     {
       "path": "frontend/dist/data.js",
-      "bytes": 27928,
-      "sha256": "d7721953f33e145d607bf374b1c9313b4a3a236d4570d9f3b358f94e6de4f122"
+      "bytes": 28920,
+      "sha256": "f215e3996157433b56042e586d1860acebb71e3f96480471ac04e68bdd5babc2"
     },
     {
       "path": "frontend/dist/favicon.svg",
@@ -952,8 +1447,8 @@
     },
     {
       "path": "frontend/dist/i18n.js",
-      "bytes": 29983,
-      "sha256": "8d5ada3ad73a8585999467aca42a2568b0d454ce1f43a24a536eeccdb60bad74"
+      "bytes": 31319,
+      "sha256": "7cf3300d0151140d4a7c89e456a73a0377a4388f997557ef46aeefeb0ecb03b8"
     },
     {
       "path": "frontend/dist/index.html",
@@ -1019,6 +1514,16 @@
       "path": "start.sh",
       "bytes": 579,
       "sha256": "c6a56871f856bd9c62936c9b3dd54ddef730d2429dd0a789ab0ae03dcb5f1baa"
+    },
+    {
+      "path": "verification/MODULE4_BROWSER_VERIFIED_20261030.json",
+      "bytes": 93,
+      "sha256": "c8c26e6a30f7265d01db3f6c528eaa461747763b6c4102a383e0262163927aeb"
+    },
+    {
+      "path": "verification/MODULE4_INTEGRATION_VERIFIED_20261030.json",
+      "bytes": 268,
+      "sha256": "60e954579bc822fafd866267de5a53eb71ebc34da84d498f51412336f6e91a9f"
     }
   ],
   "privateConfigIncluded": false,

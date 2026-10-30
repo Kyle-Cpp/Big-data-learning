@@ -378,6 +378,7 @@ export async function fetchPageData(page, settings = {}, filters = {}) {
     }
   };
   const loaders = {
+    capabilities: () => request('/api/datasets/capabilities'),
     matches: () => request('/api/results/matches', { ...pick(normalized, normalized.source === 'dixon-coles' ? ['source'] : ['league', 'season', 'source']), location: locationFor('matches') }),
     players: () => request('/api/results/players', { ...pick(normalized, ['position', 'season']), limit: normalized.limit ?? (page === 'players' ? 0 : 20), competition: normalized.competition || normalized.league, location: locationFor('players') }),
     simulation: () => request('/api/results/simulation', { ...pick(normalized, ['league']), location: locationFor('simulation') }),
@@ -391,7 +392,7 @@ export async function fetchPageData(page, settings = {}, filters = {}) {
   const sections = {
     dashboard: ['matches', 'players', 'simulation', 'evaluation', 'models', 'jobs', 'catalog'],
     matches: ['matches'], players: ['players'], simulation: ['simulation', 'realTable'],
-    history: ['history'], evaluation: ['evaluation'], models: ['models'], jobs: ['jobs', 'catalog'],
+    history: ['history'], evaluation: ['evaluation'], models: ['models'], jobs: ['jobs', 'catalog', 'capabilities'],
   }[page];
   if (paths.realTable && sections.includes('realTable')) metadata.warnings.push('真实积分榜的读取位置由后端配置决定。');
   const values = await Promise.all(sections.map(key => loaders[key]()));
@@ -402,3 +403,16 @@ export const submitJob = (request, settings = {}) => apiRequest('/api/jobs', { .
 export const getJob = (id, settings = {}) => apiRequest(`/api/jobs/${encodeURIComponent(id)}`, settings);
 export const getJobLog = (id, settings = {}) => apiRequest(`/api/jobs/${encodeURIComponent(id)}/log`, settings);
 export const killJob = (id, settings = {}) => apiRequest(`/api/jobs/${encodeURIComponent(id)}/kill`, { ...settings, method: 'POST' });
+
+export function uploadDataset(file, datasetId, relativePath, settings, progress) {
+  return new Promise((resolve,reject)=>{
+    const xhr=new XMLHttpRequest();xhr.open('POST',buildApiURL('/api/datasets',settings));xhr.timeout=330000;
+    xhr.upload.onprogress=e=>progress(e.lengthComputable?e.loaded/e.total:0);
+    xhr.onerror=()=>reject(new Error('上传连接失败，请检查后端。'));
+    xhr.ontimeout=()=>reject(new Error('上传超时，请检查Linux和HDFS。'));
+    xhr.onload=()=>{let data;try{data=JSON.parse(xhr.responseText);}catch{reject(new Error('上传接口未返回JSON'));return;}
+      if(xhr.status<200||xhr.status>=300||!data.uploaded){reject(new Error(data.message||'上传失败'));return;}resolve(data);};
+    const body=new FormData();body.append('file',file);body.append('relativePath',relativePath);
+    if(datasetId)body.append('datasetId',datasetId);xhr.send(body);
+  });
+}

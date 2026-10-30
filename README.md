@@ -66,6 +66,8 @@ java -jar backend/target/footpred-backend-1.0.0.jar --spring.config.additional-l
 - `scripts/migrate_player_profiles.py`：旧版球员表迁移，需要Python3和mysql命令行。
 - `docs/`：数据字典、ER设计、修复记录与部署边界。
 
+模块四五Job算法源码已放入 `algorithms/module4/`，构建和部署见 [五Job接入说明](docs/MODULE4_FIVE_JOBS_20261030.md)。
+
 源码仓库不包含12GB StatsBomb原始JSON、完整原始训练数据或全部算法JAR。模型文件属于已训练参数，不能替代原始训练集。StatsBomb资料来源见 [官方开放数据仓库](https://github.com/statsbomb/open-data)，使用其数据需遵循原许可及署名要求。
 
 要提交新的MR预测、分析或训练，需要配置Linux Hadoop、HDFS、YARN、相应算法JAR及输入路径，并启用作业执行。当前仓库中的Web部署与完整算法训练复现是两个层次；已有结果展示已验证，不代表新电脑无需配置就能运行全部MR作业。原算法项目参见 [FootPred_hadoop_mapreduce](https://github.com/PeidongLiu05/FootPred_hadoop_mapreduce)。本仓库未提供通用数据上传后自动重训的完整流程。
@@ -78,11 +80,12 @@ cd frontend
 node --test tests/*.test.mjs
 ```
 
-本轮后端135项：131通过、4跳过；前端20项通过。测试中的数据库使用H2兼容模式；本机另做了真实MySQL导入和浏览器检查。
+模块四接入前的验证为后端135项：131通过、4跳过；前端20项通过。模块四新增回归和接入验证见对应说明。测试中的数据库使用H2兼容模式；本机另做了真实MySQL导入和浏览器检查。
 
 - [模块一修复](docs/MODULE1_FIX_20261030.md)：RF/DC来源分离、非法结果防护。
 - [真实DC重放](docs/DC_LINUX_REPLAY_20261030.md)：11条实际MR输出与来源。
 - [模块三修复](docs/MODULE3_FIX_20261030.md)：正确按赛季、球队、球员保留10992条画像。
+- [模块四五Job接入](docs/MODULE4_FIVE_JOBS_20261030.md)：专用算法JAR、运行编号、回放指标和数据来源。
 - [模块五修复](docs/MODULE5_FIX_20261030.md)：7/8列生涯格式区分、19条结果重导入、小数显示。
 - [本次GitHub上传说明](docs/GITHUB_UPDATE_20261030.md)。
 
