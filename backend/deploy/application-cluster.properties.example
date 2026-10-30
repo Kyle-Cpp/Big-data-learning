@@ -1,0 +1,21 @@
+# Copy these settings into YOUR private config after Linux is online.
+# Windows backend -> OpenSSH -> Linux Hadoop. No passwords in this file.
+footpred.cluster.mode=ssh
+footpred.cluster.ssh.host=192.168.85.10
+footpred.cluster.ssh.user=root
+footpred.cluster.ssh.port=22
+footpred.cluster.ssh.identity=C:/Users/YOUR_USER/.ssh/id_ed25519
+footpred.hadoop.bin=/training/hadoop-3.3.6/bin/hadoop
+footpred.hdfs.bin=/training/hadoop-3.3.6/bin/hdfs
+footpred.yarn.rm-url=http://192.168.85.10:8088
+# Verify these JAR paths on the Linux host before enabling execution.
+footpred.jar.handoff=/job/app/footpred-module2-fixed.jar
+footpred.jar.handoff.module3=/job/app/footpred-module3.jar
+footpred.jar.handoff.module5=/job/app/footpred-module5.jar
+footpred.jar.partner=/job/app/footpred-algo-1.0.0.jar
+footpred.upload.root=/footpred/web-uploads
+footpred.upload.enabled=true
+footpred.job.enabled=true
+# Enable deliberately when you want DC/RF training, not just inference.
+footpred.job.training.enabled=false
+footpred.job.max-concurrent=1

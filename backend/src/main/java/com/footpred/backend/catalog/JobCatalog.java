@@ -117,9 +117,10 @@ public final class JobCatalog {
                 .argument(arg("seed").optional("42").build())
                 .argument(arg("top-places").optional("4").build())
                 .argument(arg("relegation-places").optional("auto").build())
+                .argument(arg("run-id").optional(null).describedAs("unique five-job run directory id").build())
                 .argument(arg("out").optional(null).build())
-                .describedAs("P5.2: Monte-Carlo season replay")
-                .expectedSeconds(39)
+                .describedAs("Five MR jobs: P5.0 prepare -> P5.1 cutoff table -> P5.3 DC rates -> P5.2 simulation -> P5.4 evaluation")
+                .expectedSeconds(180)
                 .build());
 
         specs.put("history-p65", JobSpec.builder("history-p65")
@@ -177,6 +178,16 @@ public final class JobCatalog {
                 .build());
 
         // ---- handoff package: modules 2 and 3, P6.1-P6.4 ----
+        for (String command : new String[]{"club-all", "international-all"}) {
+            specs.put(command, JobSpec.builder(command)
+                    .jar(JAR_HANDOFF_M2).origin(JobSpec.Origin.HANDOFF)
+                    .module(JobSpec.Module.MATCH_OUTCOME).argStyle(JobSpec.ArgStyle.POSITIONAL)
+                    .argument(pos("raw-input").describedAs("Raw CSV file or dataset directory on HDFS").build())
+                    .argument(pos("work-root").describedAs("New HDFS directory for clean, features, model and evaluation").build())
+                    .retrains(true).expectedSeconds(1800)
+                    .describedAs(command + ": clean, features, train, predict and evaluate a NEW random forest")
+                    .build());
+        }
         specs.put("club-predict", JobSpec.builder("club-predict")
                 .jar(JAR_HANDOFF_M2)
                 .origin(JobSpec.Origin.HANDOFF)

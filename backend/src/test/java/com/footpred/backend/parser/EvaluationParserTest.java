@@ -22,6 +22,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 class EvaluationParserTest {
 
+    @Test
+    void seasonReplayUsesLeagueMetricValueAndRejectsRfInput() throws IOException {
+        List<EvaluationReport> reports = EvaluationParser.parseSeasonReplay(fixture("module4-evaluation.tsv"));
+        assertEquals(5, reports.size());
+        assertEquals("Bundesliga", reports.get(0).split);
+        assertEquals("6.27666667", reports.get(0).metrics.get("points_mae"));
+        assertNull(reports.get(0).accuracy);
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+                () -> EvaluationParser.parseSeasonReplay(fixture("evaluation-test.tsv")));
+    }
+
     private List<String> fixture(String name) throws IOException {
         return Files.readAllLines(Paths.get("src/test/resources/fixtures", name),
                 StandardCharsets.UTF_8);

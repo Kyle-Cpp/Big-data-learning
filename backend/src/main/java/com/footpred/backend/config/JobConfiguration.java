@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Configuration;
 public class JobConfiguration {
 
     @Bean
-    public JobExecutor jobExecutor() {
-        return new LocalProcessJobExecutor();
+    public JobExecutor jobExecutor(com.footpred.backend.job.ClusterGateway cluster) {
+        return new LocalProcessJobExecutor(cluster);
     }
 }

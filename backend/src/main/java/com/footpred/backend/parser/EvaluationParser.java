@@ -22,6 +22,28 @@ public final class EvaluationParser {
     private EvaluationParser() {
     }
 
+    /** P5.4 is league TAB metric TAB value; never parse it as RF metrics. */
+    public static List<EvaluationReport> parseSeasonReplay(List<String> lines) {
+        java.util.Map<String, EvaluationReport> groups = new java.util.LinkedHashMap<String, EvaluationReport>();
+        for (String line : lines) {
+            if (Tsv.isSkippable(line)) continue;
+            String[] f = Tsv.split(line);
+            if (f.length != 3 || !f[1].matches("teams|points_mae|rank_mae|title_brier|top_brier|relegation_brier")) {
+                throw new IllegalArgumentException("Invalid P5.4 metric row");
+            }
+            double value = Tsv.toDouble(f[2], Double.NaN);
+            if (!Double.isFinite(value) || value < 0) throw new IllegalArgumentException("Invalid P5.4 metric value");
+            String league = com.footpred.backend.domain.LeagueCode.canonical(f[0]);
+            EvaluationReport report = groups.get(league);
+            if (report == null) { report = new EvaluationReport(); report.split = league; groups.put(league, report); }
+            if (report.metrics.put(f[1], f[2]) != null) throw new IllegalArgumentException("Duplicate P5.4 metric");
+        }
+        for (EvaluationReport report : groups.values()) {
+            if (report.metrics.size() != 6) throw new IllegalArgumentException("Incomplete P5.4 league metrics");
+        }
+        return new ArrayList<EvaluationReport>(groups.values());
+    }
+
     /**
      * Handoff format: one metric per line, {@code key <TAB> value}.
      *

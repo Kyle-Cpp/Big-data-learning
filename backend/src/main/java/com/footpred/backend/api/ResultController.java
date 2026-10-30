@@ -50,6 +50,9 @@ public class ResultController {
     @Value("${footpred.result.simulation:}")
     private String simulationLocation;
 
+    @Value("${footpred.result.simulation-evaluation:}")
+    private String simulationEvaluationLocation;
+
     @Value("${footpred.result.real-table:}")
     private String realTableLocation;
 
@@ -345,6 +348,23 @@ public class ResultController {
         Map<String, Object> payload = new LinkedHashMap<String, Object>();
         payload.put("count", rows.size());
         payload.put("items", rows);
+        // Only attach the default run's report to its matching default output.
+        if ((location == null || location.trim().isEmpty())
+                && simulationEvaluationLocation != null && !simulationEvaluationLocation.trim().isEmpty()) {
+            try {
+                List<EvaluationReport> reports = EvaluationParser.parseSeasonReplay(
+                        reader.readAllLines(simulationEvaluationLocation));
+                if (league != null && !league.trim().isEmpty()) {
+                    String filter = LeagueCode.canonical(league);
+                    reports.removeIf(report -> !filter.equals(report.split));
+                }
+                payload.put("evaluation", reports);
+                payload.put("pipeline", "P5.0 -> P5.1 -> P5.3 -> P5.2 -> P5.4");
+            } catch (IOException missingReport) {
+                payload.put("evaluation", Collections.emptyList());
+                payload.put("note", "No P5.4 evaluation file available for this result");
+            }
+        }
         return ResponseEntity.ok(payload);
     }
 

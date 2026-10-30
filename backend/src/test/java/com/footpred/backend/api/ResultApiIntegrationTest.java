@@ -27,6 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         "footpred.result.module2-international-model=models/module2/international-rf-v1",
         "footpred.result.module3-model=src/test/resources/fixtures/player-xg-model.json",
         "footpred.result.simulation=src/test/resources/fixtures/simulation_full.tsv",
+        "footpred.result.simulation-evaluation=src/test/resources/fixtures/module4-evaluation.tsv",
         "footpred.result.real-table=src/test/resources/fixtures/real_final_table.tsv",
         "footpred.result.matches.dixon-coles="
 })
@@ -35,6 +36,17 @@ class ResultApiIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Test
+    void seasonReplayReportFollowsLeagueFilterAndCustomOutputDoesNotReuseDefaultMetrics() throws Exception {
+        mockMvc.perform(get("/api/results/simulation").param("league", "bundesliga"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.evaluation.length()").value(1))
+                .andExpect(jsonPath("$.evaluation[0].metrics.points_mae").value("6.27666667"));
+        mockMvc.perform(get("/api/results/simulation")
+                        .param("location", "src/test/resources/fixtures/simulation_full.tsv"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.evaluation").doesNotExist());
+    }
 
     @Test
     void realClubCareerHasCorrectSeasonsAndMetricMeaning() throws Exception {
@@ -109,7 +121,7 @@ class ResultApiIntegrationTest {
         mockMvc.perform(get("/api/catalog/jobs"))
                 .andExpect(status().isOk())
                 // 10 partner commands + 9 handoff commands = 19 spec entries.
-                .andExpect(jsonPath("$.length()").value(19));
+                .andExpect(jsonPath("$.length()").value(21));
     }
 
     @Test

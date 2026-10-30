@@ -43,6 +43,17 @@ class ImportApiIntegrationTest {
     private static final String FIXTURES = "src/test/resources/fixtures";
 
     @Test
+    void importsThirtySeasonMetricsWithoutRfInterpretation() throws Exception {
+        String body = "{\"module\":\"SEASON_SIMULATION\",\"location\":\"" + FIXTURES + "/module4-evaluation.tsv\"}";
+        for (int i = 0; i < 2; i++) {
+            mockMvc.perform(post("/api/admin/import/evaluation/fivejobs")
+                            .contentType(MediaType.APPLICATION_JSON).content(body))
+                    .andExpect(status().isOk()).andExpect(jsonPath("$.totalRows").value(30));
+        }
+        assertEquals(30, jdbc.queryForObject("SELECT COUNT(*) FROM evaluation_metric WHERE run_id='fivejobs' AND module='SEASON_SIMULATION'", Integer.class));
+    }
+
+    @Test
     void clubCareerImportMatchesReadApiAndInvalidFilePreservesRows() throws Exception {
         String endpoint = "/api/admin/import/history/club-career";
         mockMvc.perform(post(endpoint).contentType(MediaType.APPLICATION_JSON)

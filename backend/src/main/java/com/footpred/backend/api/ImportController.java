@@ -128,6 +128,9 @@ public class ImportController {
             @PathVariable String runId,
             @RequestBody Map<String, String> body) {
         String module = body.containsKey("module") ? body.get("module") : "PLAYER_PREDICTION";
+        if ("SEASON_SIMULATION".equals(module)) {
+            return ResponseEntity.ok(response(importService.importSeasonEvaluation(runId, body.get("location"))));
+        }
         // Module 3 prefixes every key with its split; splitting the file here
         // keeps one row per (run, module, split, metric) like module 2.
         java.util.Map<String, ResultImportService.ImportReport> bySplit =

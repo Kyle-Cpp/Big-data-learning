@@ -54,9 +54,48 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ActiveProfiles("mysql-test")
 @Sql(scripts = "classpath:schema-h2.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 class JobServiceTest {
+    @Test
+    void trainingCanBeExplicitlyEnabledForANewForestRun() throws Exception {
+        org.springframework.test.util.ReflectionTestUtils.setField(jobService, "trainingEnabled", true);
+        try {
+            Map<String,String> args = new LinkedHashMap<String,String>();
+            args.put("raw-input", "/footpred/web-uploads/new-dataset");
+            args.put("work-root", "/footpred/runs/new-training");
+            JobInstance job = jobService.submit(request("club-all", args));
+            assertEquals("club-all", job.command);
+            assertEquals(JobInstance.Status.SUCCEEDED, waitForTerminal(job.id, 25).status);
+        } finally {
+            org.springframework.test.util.ReflectionTestUtils.setField(jobService, "trainingEnabled", false);
+        }
+    }
 
     @Autowired
     private JobService jobService;
+
+    @Test
+    void executorTracksLaterApplicationInMultiJobPipeline() throws Exception {
+        writeStub(0, 0, "INFO Submitted application application_1792822091296_0043");
+        JobInstance job = jobService.submit(request("club-predict", clubPredictArgs()));
+        assertEquals("application_1792822091296_0043", waitForTerminal(job.id, 25).yarnApplicationId);
+    }
+
+    @Test
+    void simulateForwardsRunIdAndSelectsDedicatedModule4Jar() throws Exception {
+        Map<String, String> args = new LinkedHashMap<String, String>();
+        args.put("input", "/FootPred/data/results.csv");
+        args.put("workdir", "/FootPred/module4");
+        args.put("model", "/FootPred/module1/clubs/model.json");
+        org.springframework.test.util.ReflectionTestUtils.setField(jobService, "module4Jar", "/tmp/module4-fivejobs.jar");
+        try {
+            JobService.SubmitRequest req = request("simulate", args);
+            JobInstance job = jobService.submit(req);
+            assertTrue(job.argsJson.contains(req.runId));
+            waitForTerminal(job.id, 25);
+            assertEquals("/tmp/module4-fivejobs.jar", org.springframework.test.util.ReflectionTestUtils.invokeMethod(jobService, "jarFor", com.footpred.backend.catalog.JobCatalog.get("simulate")));
+        } finally {
+            org.springframework.test.util.ReflectionTestUtils.setField(jobService, "module4Jar", "");
+        }
+    }
 
     @Autowired
     private JobInstanceRepository jobs;

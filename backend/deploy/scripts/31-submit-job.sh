@@ -120,7 +120,7 @@ JSON
 {"command":"simulate","runId":"$RUN_ID_RESOLVED","arguments":{
   "input":"$(partner_path "/data/leagues/results_leagues.csv")",
   "workdir":"$(partner_path "/module4")",
-  "model":"$(partner_path "/module4/runs/leagues_v1/model.json")",
+  "model":"$(partner_path "/module1/clubs/runs/leagues_v1/model.json")",
   "out":"$(partner_path "/runs/$RUN_ID_RESOLVED/simulation")"
 }}
 JSON

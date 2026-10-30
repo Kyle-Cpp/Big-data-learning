@@ -176,6 +176,24 @@ public class ResultImportService {
 
     // ----------------------------------------------------------- players
 
+    /** Import P5.4 as six metrics per league, independently of RF split reports. */
+    @Transactional
+    public ImportReport importSeasonEvaluation(String runId, String location) {
+        ImportReport report = new ImportReport();
+        report.runId = runId;
+        List<String> lines = readOrNull(location);
+        if (lines == null || lines.isEmpty()) {
+            report.skip("evaluation_metric", "location not readable or empty: " + location);
+            return report;
+        }
+        List<EvaluationReport> parsed = EvaluationParser.parseSeasonReplay(lines);
+        for (EvaluationReport league : parsed) {
+            report.add("evaluation_metric[" + league.split + "]",
+                    results.replaceEvaluation(runId, "SEASON_SIMULATION", league));
+        }
+        return report;
+    }
+
     @Transactional
     public ImportReport importPlayers(String runId, String location) {
         ImportReport report = new ImportReport();

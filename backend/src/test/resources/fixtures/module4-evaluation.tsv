@@ -1,0 +1,30 @@
+Bundesliga	teams	18.00000000
+Bundesliga	points_mae	6.27666667
+Bundesliga	rank_mae	2.21666667
+Bundesliga	title_brier	0.00003265
+Bundesliga	top_brier	0.08727677
+Bundesliga	relegation_brier	0.06307101
+La Liga	teams	20.00000000
+La Liga	points_mae	4.56450000
+La Liga	rank_mae	2.74500000
+La Liga	title_brier	0.00685767
+La Liga	top_brier	0.00075491
+La Liga	relegation_brier	0.06602773
+Ligue 1	teams	18.00000000
+Ligue 1	points_mae	4.55000000
+Ligue 1	rank_mae	1.38000000
+Ligue 1	title_brier	0.00107923
+Ligue 1	top_brier	0.07335987
+Ligue 1	relegation_brier	0.02980577
+Premier League	teams	20.00000000
+Premier League	points_mae	6.30200000
+Premier League	rank_mae	2.63400000
+Premier League	title_brier	0.03630537
+Premier League	top_brier	0.09298510
+Premier League	relegation_brier	0.01788296
+Serie A	teams	20.00000000
+Serie A	points_mae	4.80100000
+Serie A	rank_mae	1.49200000
+Serie A	title_brier	0.00571631
+Serie A	top_brier	0.11826740
+Serie A	relegation_brier	0.07952830

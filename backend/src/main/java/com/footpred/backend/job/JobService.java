@@ -54,7 +54,11 @@ public class JobService {
     private final String module3Jar;
     private final String module5Jar;
     private final String partnerJar;
+    @Value("${footpred.jar.partner.module4:}")
+    private String module4Jar;
     private final int maxConcurrent;
+    @Value("${footpred.job.training.enabled:false}")
+    private boolean trainingEnabled;
 
     /** Live handles, keyed by job id. Absent for jobs after a restart. */
     private final Map<Long, JobExecutor.Handle> running =
@@ -109,6 +113,9 @@ public class JobService {
      */
     private String jarFor(JobSpec spec) {
         if (spec.origin() == JobSpec.Origin.PARTNER) {
+            if ("simulate".equals(spec.id()) && module4Jar != null && !module4Jar.trim().isEmpty()) {
+                return module4Jar;
+            }
             return partnerJar;
         }
         String id = spec.id();
@@ -149,12 +156,12 @@ public class JobService {
         if (spec == null) {
             throw new IllegalArgumentException("未知命令：" + request.command);
         }
-        if (spec.retrains()) {
+        if (spec.retrains() && !trainingEnabled) {
             // The handoff package forbids retraining during a live demo; the API
             // enforces the same rule so nobody triggers it by accident.
             throw new IllegalArgumentException(
                     "命令 " + spec.id() + " 会重新训练，不在演示流程中提交。"
-                            + "如确需训练，请直接在虚拟机上执行脚本。");
+                            + "请配置 footpred.job.training.enabled=true 后再提交。");
         }
         long active = running.values().stream().filter(JobExecutor.Handle::isRunning).count();
         if (active >= maxConcurrent) {
@@ -171,7 +178,7 @@ public class JobService {
                 : request.runId.trim();
 
         Map<String, String> properties = new LinkedHashMap<String, String>();
-        if (spec.origin() == JobSpec.Origin.HANDOFF) {
+        if (spec.origin() == JobSpec.Origin.HANDOFF && !spec.retrains()) {
             // Both margins must be explicit: the packaged default is 0.10/auto-tune,
             // while the delivered models assume fixed 0.11 and 0.15.
             String margin = "club-predict".equals(spec.id()) || "club-evaluate".equals(spec.id())
@@ -184,6 +191,13 @@ public class JobService {
         // option is absent), and the value is fixed by which catalogue entry was
         // chosen, so callers should not have to repeat it.
         Map<String, String> supplied = new LinkedHashMap<String, String>(request.arguments);
+        if ("simulate".equals(spec.id())) {
+            String argumentRun = supplied.get("run-id");
+            if (argumentRun != null && !argumentRun.trim().isEmpty() && !runId.equals(argumentRun.trim())) {
+                throw new IllegalArgumentException("simulate arguments.run-id must match request.runId; use request.runId only");
+            }
+            supplied.put("run-id", runId);
+        }
         if (spec.id().startsWith("history-")) {
             supplied.putIfAbsent("analysis", spec.id().substring("history-".length()));
         }

@@ -27,6 +27,9 @@ import java.util.regex.Pattern;
  * </ul>
  */
 public class LocalProcessJobExecutor implements JobExecutor {
+    private final ClusterGateway cluster;
+    public LocalProcessJobExecutor() { this.cluster = null; }
+    public LocalProcessJobExecutor(ClusterGateway cluster) { this.cluster = cluster; }
 
     private static final Logger log = LoggerFactory.getLogger(LocalProcessJobExecutor.class);
 
@@ -42,7 +45,7 @@ public class LocalProcessJobExecutor implements JobExecutor {
 
     @Override
     public Handle start(CommandBuilder.Command command) throws IOException {
-        ProcessBuilder builder = new ProcessBuilder(command.argv);
+        ProcessBuilder builder = new ProcessBuilder(cluster == null ? command.argv : cluster.command(command.argv));
         builder.redirectErrorStream(true);
         log.info("starting job: {}", command);
 
@@ -76,9 +79,9 @@ public class LocalProcessJobExecutor implements JobExecutor {
                             output.removeFirst();
                         }
                     }
-                    if (applicationId == null) {
+                    {
                         Matcher matcher = APPLICATION_ID.matcher(line);
-                        if (matcher.find()) {
+                        if (matcher.find() && !matcher.group().equals(applicationId)) {
                             applicationId = matcher.group();
                             log.info("{} -> {}", command.resolved.get("workdir"), applicationId);
                         }
