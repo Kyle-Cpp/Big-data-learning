@@ -1,0 +1,11 @@
+{
+  "sourcePackage": "FootPred_Module4_FiveJobs_20261030.zip",
+  "jarSha256": "82b8a9bccef7a3e12574502f8b7ba15f6cad2b507d835bcb13bdbedcc8cc393f",
+  "sourceReport": "partner supplied CentOS run; not rerun on local VM",
+  "runId": "fivejobs-20261030-1652",
+  "seconds": 177.5,
+  "totalSims": 10000,
+  "maps": 2,
+  "model": "existing club DC v1; training cutoff not verified",
+  "fixtures": "2025-08-01 through 2026-06-30, cutoff 2026-01-01"
+}

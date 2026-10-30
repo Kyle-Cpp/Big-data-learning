@@ -1,0 +1,14 @@
+{
+  "simulationTeams": 96,
+  "leagues": 5,
+  "mysqlMetrics": 30,
+  "metricsEqual": true,
+  "tests": {
+    "tests": 143,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 4
+  },
+  "pipeline": "P5.0 -> P5.1 -> P5.3 -> P5.2 -> P5.4",
+  "frontendTests": 20
+}

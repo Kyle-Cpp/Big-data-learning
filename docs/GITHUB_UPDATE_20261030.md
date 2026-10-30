@@ -8,7 +8,7 @@
 
 ```bash
 git status --short
-git add README.md .gitignore start.bat start.sh application-local.properties.example backend frontend data docs scripts
+git add README.md .gitignore start.bat start.sh application-local.properties.example backend frontend data docs scripts algorithms
 git diff --cached --stat
 git diff --cached --check
 git commit -m "Fix DC, player season profiles and career results; document deployment"
@@ -40,3 +40,7 @@ git push origin HEAD
 原始StatsBomb/训练数据不入库，模型和小型导出结果保留。JAR在backend/target构建，按需附GitHub Release。
 
 旧ER图和数据字典保留历史快照并增加版本说明；当前物理表结构以schema-mysql.sql为准，尤其球员唯一键已改为run_id、season、team_id、player_id。
+
+## 后续模块四升级
+
+本版本还包含 algorithms/module4 五Job算法源码与赛季回放评估接入，部署和运行边界见 MODULE4_FIVE_JOBS_20261030.md。需要在Hadoop执行主机更新算法JAR；只更新Web源码不能替换远端算法JAR。

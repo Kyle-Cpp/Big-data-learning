@@ -1,0 +1,6 @@
+stage	job_name	job_id	status
+1	P5.0-season-prepare-and-cutoff-split	job_1793350086844_0001	SUCCEEDED
+2	P5.1-cutoff-team-table	job_1793350086844_0002	SUCCEEDED
+3	P5.3-remaining-fixture-dc-intensities	job_1793350086844_0003	SUCCEEDED
+4	P5.2-season-simulation	job_1793350086844_0004	SUCCEEDED
+5	P5.4-season-replay-evaluation	job_1793350086844_0005	SUCCEEDED
