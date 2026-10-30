@@ -87,26 +87,46 @@ public final class MatchPredictionParser {
                 continue;
             }
             String[] f = Tsv.split(line);
-            if (f.length < 6) {
+            if (f.length < 6 || f.length > 7) {
+                continue;
+            }
+            String[] teams = splitMatchKey(f[0]);
+            if (teams[0].trim().isEmpty() || teams[1].trim().isEmpty()) {
+                continue;
+            }
+            double ph = Tsv.toDouble(f[1], Double.NaN);
+            double pd = Tsv.toDouble(f[2], Double.NaN);
+            double pa = Tsv.toDouble(f[3], Double.NaN);
+            double homeRate = Tsv.toDouble(f[4], Double.NaN);
+            double awayRate = Tsv.toDouble(f[5], Double.NaN);
+            if (!isProbability(ph) || !isProbability(pd) || !isProbability(pa)
+                    // The partner's real MR writer emits four decimal places.
+                    // Three rounded probabilities may sum to 0.9999 or 1.0001.
+                    || Math.abs(ph + pd + pa - 1.0) > 1.5e-4
+                    || !Double.isFinite(homeRate) || homeRate < 0
+                    || !Double.isFinite(awayRate) || awayRate < 0) {
                 continue;
             }
             MatchPrediction prediction = new MatchPrediction();
             prediction.source = SOURCE_DIXON_COLES;
             prediction.matchId = f[0];
-            String[] teams = splitMatchKey(f[0]);
             prediction.homeTeam = teams[0];
             prediction.awayTeam = teams[1];
-            prediction.probabilityHome = Tsv.toDouble(f[1], Double.NaN);
-            prediction.probabilityDraw = Tsv.toDouble(f[2], Double.NaN);
-            prediction.probabilityAway = Tsv.toDouble(f[3], Double.NaN);
-            prediction.lambdaHome = Tsv.toNullableDouble(f[4]);
-            prediction.lambdaAway = Tsv.toNullableDouble(f[5]);
+            prediction.probabilityHome = ph;
+            prediction.probabilityDraw = pd;
+            prediction.probabilityAway = pa;
+            prediction.lambdaHome = homeRate;
+            prediction.lambdaAway = awayRate;
             if (f.length > 6) {
                 prediction.topScores = Tsv.splitPipes(f[6]);
             }
             result.add(prediction);
         }
         return result;
+    }
+
+    private static boolean isProbability(double value) {
+        return Double.isFinite(value) && value >= 0 && value <= 1;
     }
 
     /**

@@ -230,10 +230,7 @@ class ResultImportRepositoryTest {
     }
 
     /**
-     * The reducer emits one row per (team, match, player), so a player who
-     * transferred mid-season appears twice under the same player id. The unique
-     * key therefore includes the team; keying on player id alone rejected the
-     * real 10992-row module-3 output with a duplicate-entry error.
+     * A transfer retains separate profiles under both team ids.
      */
     @Test
     void samePlayerUnderTwoTeamsIsAccepted() {
@@ -241,6 +238,8 @@ class ResultImportRepositoryTest {
         java.util.List<PlayerProfile> rows = new java.util.ArrayList<PlayerProfile>();
 
         PlayerProfile atClubA = new PlayerProfile();
+        atClubA.season = "2021-22";
+        atClubA.teamId = 217;
         atClubA.playerId = 5503;
         atClubA.playerName = "Lionel Messi";
         atClubA.teamName = "Barcelona";
@@ -250,6 +249,8 @@ class ResultImportRepositoryTest {
         rows.add(atClubA);
 
         PlayerProfile atClubB = new PlayerProfile();
+        atClubB.season = "2021-22";
+        atClubB.teamId = 131;
         atClubB.playerId = 5503;
         atClubB.playerName = "Lionel Messi";
         atClubB.teamName = "Paris Saint-Germain";
@@ -262,6 +263,25 @@ class ResultImportRepositoryTest {
 
         assertEquals(2, written);
         assertEquals(2, analytics.countPlayers(runId));
+    }
+
+    @Test
+    void crossSeasonProfilesAreNeverSummedAndDuplicateInputPreservesExistingRows() throws IOException {
+        String runId = "real-seasons";
+        List<PlayerProfile> rows = PlayerProfileParser.parse(fixture("players-real-multi-season.tsv"));
+        assertEquals(3, analytics.replacePlayerProfiles(runId, rows));
+        assertEquals(3, analytics.replacePlayerProfiles(runId, rows));
+        assertEquals(3, analytics.countPlayers(runId));
+        assertEquals(2, jdbc.queryForObject("SELECT COUNT(*) FROM player_profile WHERE run_id=? AND team_id=217",
+                Integer.class, runId));
+        assertEquals(38.91173282, jdbc.queryForObject("SELECT expected_minutes FROM player_profile"
+                + " WHERE run_id=? AND season='2005-06'", Double.class, runId), 0.00005);
+        assertEquals(0.16611143, jdbc.queryForObject("SELECT goal_probability FROM player_profile"
+                + " WHERE run_id=? AND season='2005-06'", Double.class, runId), 0.000001);
+        rows.add(rows.get(0));
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class,
+                () -> analytics.replacePlayerProfiles(runId, rows));
+        assertEquals(3, analytics.countPlayers(runId));
     }
 
     // -------------------------------------------------------- simulation

@@ -27,13 +27,82 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         "footpred.result.module2-international-model=models/module2/international-rf-v1",
         "footpred.result.module3-model=src/test/resources/fixtures/player-xg-model.json",
         "footpred.result.simulation=src/test/resources/fixtures/simulation_full.tsv",
-        "footpred.result.real-table=src/test/resources/fixtures/real_final_table.tsv"
+        "footpred.result.real-table=src/test/resources/fixtures/real_final_table.tsv",
+        "footpred.result.matches.dixon-coles="
 })
 @AutoConfigureMockMvc
 class ResultApiIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Test
+    void realClubCareerHasCorrectSeasonsAndMetricMeaning() throws Exception {
+        mockMvc.perform(get("/api/results/history").param("analysis", "P6.5")
+                        .param("location", "src/test/resources/fixtures/p65-club-real.tsv"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(19))
+                .andExpect(jsonPath("$.items[0].season").value("2004-05"))
+                .andExpect(jsonPath("$.items[0].count").value(7))
+                .andExpect(jsonPath("$.items[0].secondaryValue").value(0.57))
+                .andExpect(jsonPath("$.items[0].secondaryMetric").value("xg"));
+    }
+
+    @Test
+    void playersKeepAllSeasonProfilesAndAcceptSlashSeasonFilter() throws Exception {
+        String fixture = "src/test/resources/fixtures/players-real-multi-season.tsv";
+        mockMvc.perform(get("/api/results/players").param("location", fixture).param("limit", "0"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(3))
+                .andExpect(jsonPath("$.totalCount").value(3))
+                .andExpect(jsonPath("$.seasons.length()").value(3))
+                .andExpect(jsonPath("$.items[0].matchId").doesNotExist());
+        mockMvc.perform(get("/api/results/players").param("location", fixture)
+                        .param("season", "2005/2006").param("competition", "La Liga"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.count").value(1))
+                .andExpect(jsonPath("$.items[0].season").value("2005-06"))
+                .andExpect(jsonPath("$.items[0].teamId").value(217))
+                .andExpect(jsonPath("$.items[0].playerId").value(5503));
+    }
+
+    @Test
+    void dcWithoutItsOwnLocationNeverFallsBackToRfFile() throws Exception {
+        mockMvc.perform(get("/api/results/matches").param("source", "dixon-coles"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.available").value(false))
+                .andExpect(jsonPath("$.count").value(0))
+                .andExpect(jsonPath("$.error").value("prediction-location-not-configured"));
+    }
+
+    @Test
+    void dcAcceptsItsOwnFixtureFile() throws Exception {
+        mockMvc.perform(get("/api/results/matches").param("source", "dixon-coles")
+                        .param("location", "src/test/resources/fixtures/predict-part-m-sample.tsv"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.available").value(true))
+                .andExpect(jsonPath("$.count").value(4))
+                .andExpect(jsonPath("$.items[0].homeTeam").value("Argentina"))
+                .andExpect(jsonPath("$.items[0].probabilityHome").value(0.4123));
+    }
+
+    @Test
+    void dcRejectsExplicitRfLocationInsteadOfReturningInvalidProbabilities() throws Exception {
+        mockMvc.perform(get("/api/results/matches").param("source", "dixon-coles")
+                        .param("location", "src/test/resources/fixtures/rf4-predictions-sample.tsv"))
+                .andExpect(status().isUnprocessableEntity())
+                .andExpect(jsonPath("$.count").value(0))
+                .andExpect(jsonPath("$.error").value("invalid-prediction-format"));
+    }
+
+    @Test
+    void dcMissingFileIsReportedAsUnavailable() throws Exception {
+        mockMvc.perform(get("/api/results/matches").param("source", "dixon-coles")
+                        .param("location", "nonexistent-dc-results.tsv"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.available").value(false))
+                .andExpect(jsonPath("$.error").value("prediction-results-missing-or-empty"));
+    }
 
     @Test
     void catalogExposesEveryCommand() throws Exception {

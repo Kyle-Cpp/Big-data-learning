@@ -55,7 +55,7 @@ public final class SeasonCode {
         if (season == null || season.isEmpty()) {
             return season;
         }
-        String value = season.trim();
+        String value = season.trim().replace('/', '-');
         String label = COMPACT_TO_LABEL.get(value);
         if (label != null) {
             return label;

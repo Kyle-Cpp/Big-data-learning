@@ -25,6 +25,28 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 class HistoryParserTest {
 
+    @Test
+    void realClubCareerCannotBeMisreadAsSevenColumnCareer() throws IOException {
+        List<String> lines = fixture("p65-club-real.tsv");
+        assertEquals(0, HistoryParser.parseCareerCurve(lines).size());
+        List<HistoryRow> rows = HistoryParser.parseCareer(lines);
+        assertEquals(19, rows.size());
+        HistoryRow first = rows.get(0);
+        assertEquals("La Liga", first.league);
+        assertEquals("2004-05", first.season);
+        assertEquals(7L, first.count);
+        assertEquals(1d, first.value);
+        assertEquals(0.57, first.secondaryValue);
+        assertEquals("xg", first.secondaryMetric);
+        assertEquals(8, HistoryParser.parseCareer(fixture("p65-career-sample.tsv")).size());
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () ->
+                HistoryParser.parseCareer(java.util.Collections.singletonList("La Liga\t7\t6\t1\t0.57\t0\t0\t0")));
+        assertEquals(1, HistoryParser.parseCareer(java.util.Collections.singletonList(
+                "Lionel Messi\twc\tWC-2022\t7\t7\t2\t0")).size());
+        assertEquals(1, HistoryParser.parseCareerClub(java.util.Collections.singletonList(
+                "La Liga\t2015-2016\t10\t20\t4\t0\t0\t0")).size());
+    }
+
     private List<String> fixture(String name) throws IOException {
         return Files.readAllLines(Paths.get("src/test/resources/fixtures", name),
                 StandardCharsets.UTF_8);

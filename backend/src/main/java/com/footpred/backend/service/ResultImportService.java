@@ -93,6 +93,11 @@ public class ResultImportService {
         List<MatchPrediction> predictions = MatchPredictionParser.SOURCE_DIXON_COLES.equals(source)
                 ? MatchPredictionParser.parseDixonColesPrediction(lines)
                 : MatchPredictionParser.parseRandomForestPrediction(lines);
+        if (MatchPredictionParser.SOURCE_DIXON_COLES.equals(source) && predictions.isEmpty()) {
+            report.skip("match_prediction[dixon-coles]",
+                    "no valid Dixon-Coles rows; existing predictions were preserved");
+            return report;
+        }
         int rows = results.replaceMatchPredictions(runId, source, predictions);
         report.add("match_prediction[" + source + "]", rows);
         log.info("imported {} match predictions for run={} source={}", rows, runId, source);
@@ -247,10 +252,7 @@ public class ResultImportService {
             case NATIONALITY:
                 return HistoryParser.parseNationality(lines);
             case CAREER_CURVE:
-                // P6.5 emits either the career table or the club-season table
-                // depending on whether --events was supplied.
-                List<HistoryRow> career = HistoryParser.parseCareerCurve(lines);
-                return career.isEmpty() ? HistoryParser.parseCareerClub(lines) : career;
+                return HistoryParser.parseCareer(lines);
             default:
                 return java.util.Collections.emptyList();
         }

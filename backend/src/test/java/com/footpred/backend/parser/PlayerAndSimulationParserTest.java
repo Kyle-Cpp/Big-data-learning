@@ -28,6 +28,8 @@ class PlayerAndSimulationParserTest {
 
         assertEquals(6, rows.size());
         PlayerProfile messi = rows.get(0);
+        assertEquals("2015-16", messi.season);
+        assertEquals(217, messi.teamId);
         assertEquals(5503, messi.playerId);
         assertEquals("Lionel Messi", messi.playerName);
         assertEquals("Barcelona", messi.teamName);
@@ -44,6 +46,30 @@ class PlayerAndSimulationParserTest {
         assertEquals(78.4, messi.expectedMinutes, 1e-6);
         assertEquals(0.6466, messi.expectedGoals, 1e-9);
         assertEquals(0.4761, messi.goalProbability, 1e-9);
+    }
+
+    @Test
+    void realProfilesRetainSeasonsAndTeamIdsWithOrWithoutReducerKeys() throws IOException {
+        List<String> lines = fixture("players-real-multi-season.tsv");
+        List<PlayerProfile> rows = PlayerProfileParser.parse(lines);
+        assertEquals(3, rows.size());
+        assertEquals("2005-06", rows.get(0).season);
+        assertEquals("2007-08", rows.get(1).season);
+        assertEquals(217, rows.get(0).teamId);
+        assertEquals(131, rows.get(2).teamId);
+        String valueOnly = lines.get(0).substring(lines.get(0).indexOf('\t') + 1);
+        PlayerProfile parsed = PlayerProfileParser.parse(java.util.Collections.singletonList(valueOnly)).get(0);
+        assertEquals(rows.get(0).season, parsed.season);
+        assertEquals(rows.get(0).expectedGoals, parsed.expectedGoals);
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () ->
+                PlayerProfileParser.parse(java.util.Collections.singletonList(
+                        valueOnly.replace("2005/2006", "not-a-season"))));
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () ->
+                PlayerProfileParser.parse(java.util.Collections.singletonList(
+                        valueOnly.replace("38.91173282", "NaN"))));
+        org.junit.jupiter.api.Assertions.assertThrows(IllegalArgumentException.class, () ->
+                PlayerProfileParser.parse(java.util.Collections.singletonList(
+                        valueOnly.replace("38.91173282", "110.0"))));
     }
 
     @Test

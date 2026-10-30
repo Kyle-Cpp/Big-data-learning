@@ -95,6 +95,39 @@ class MatchPredictionParserTest {
     }
 
     @Test
+    void dixonColesRejectsRandomForestRowsAndTheirHeader() throws IOException {
+        List<String> lines = new ArrayList<String>();
+        lines.add("match_id\tepoch_day\tseason\tleague\thome_team\taway_team\tactual\tpredicted\tp_home\tp_draw\tp_away");
+        lines.addAll(fixture("rf4-predictions-sample.tsv"));
+        assertTrue(MatchPredictionParser.parseDixonColesPrediction(lines).isEmpty());
+    }
+
+    @Test
+    void dixonColesRejectsInvalidProbabilityVectorsAndGoalRates() {
+        List<String> lines = java.util.Arrays.asList(
+                "A vs B\tNaN\t0.2\t0.3\t1\t1",
+                "A vs B\tInfinity\t0\t0\t1\t1",
+                "A vs B\t-0.1\t0.5\t0.6\t1\t1",
+                "A vs B\t1.2\t0\t0\t1\t1",
+                "A vs B\t0.4\t0.2\t0.2\t1\t1",
+                "A vs B\t0.5\t0.2\t0.3\t-1\t1",
+                "A vs B\t0.5\t0.2\t0.3\t1\tInfinity",
+                "matchKey\tpHome\tpDraw\tpAway\tlambdaHome\tlambdaAway",
+                "A\t0.5\t0.2\t0.3\t1\t1");
+        assertTrue(MatchPredictionParser.parseDixonColesPrediction(lines).isEmpty());
+    }
+
+    @Test
+    void realDcFourDecimalOutputAllowsRoundingWithoutChangingPublishedProbabilities() {
+        List<MatchPrediction> rows = MatchPredictionParser.parseDixonColesPrediction(
+                java.util.Arrays.asList("Brazil vs Germany\t0.4187\t0.2814\t0.3000\t1.316\t1.071\t1-1:0.1328",
+                        "A vs B\t0.3333\t0.3333\t0.3333\t1\t1"));
+        assertEquals(2, rows.size());
+        assertEquals(0.4187, rows.get(0).probabilityHome, 1e-12);
+        assertEquals(0.3000, rows.get(0).probabilityAway, 1e-12);
+    }
+
+    @Test
     void matchKeySplitsOnFirstSeparatorOnly() {
         String[] pair = MatchPredictionParser.splitMatchKey("Bosnia and Herzegovina vs Trinidad and Tobago");
         assertEquals("Bosnia and Herzegovina", pair[0]);

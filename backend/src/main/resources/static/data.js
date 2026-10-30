@@ -185,7 +185,7 @@ const playerSeeds = [
   ['Rayan Cherki', 'Lyon', 4, 'MF', 0.36, 7],
 ];
 const samplePlayers = playerSeeds.map(([playerName, teamName, li, position, rate, goals], i) => ({
-  teamId: 100 + i, matchId: `sample-player-match-${i}`, playerId: 1000 + i, playerName, teamName,
+  season: '2025-26', teamId: 100 + i, playerId: 1000 + i, playerName, teamName,
   competition: LEAGUES[li].label, position, appearances: 22 + i % 5, starts: 19 + i % 5,
   minutes: 1780 + i * 21, shots: 51 + Math.round(rate * 65), goals,
   xg: Number((rate * 23.2).toFixed(2)), xgPer90: Number((rate + 0.035).toFixed(3)), shrunkXgPer90: rate,
@@ -312,7 +312,7 @@ function demoPage(page, filters) {
     const scored = items.filter(row => row.correct !== null);
     return { ...listWithItems(source, items), accuracy: scored.length ? scored.filter(row => row.correct).length / scored.length : null };
   };
-  const players = () => listWithItems(demoData.players, demoData.players.items.filter(row => (!filters.competition || row.competition.toLowerCase() === String(filters.competition).toLowerCase()) && (!filters.league || row.competition === filters.league) && (!filters.position || row.position.toLowerCase().includes(String(filters.position).toLowerCase()))).slice(0, filters.limit || 100));
+  const players = () => listWithItems(demoData.players, demoData.players.items.filter(row => bySeason(row) && (!filters.competition || row.competition.toLowerCase() === String(filters.competition).toLowerCase()) && (!filters.league || row.competition === filters.league) && (!filters.position || row.position.toLowerCase().includes(String(filters.position).toLowerCase()))).slice(0, filters.limit || 100));
   const simulation = () => listWithItems(demoData.simulation, demoData.simulation.items.filter(byLeague));
   const data = {};
   if (['dashboard', 'matches'].includes(page)) data.matches = matches();
@@ -379,7 +379,7 @@ export async function fetchPageData(page, settings = {}, filters = {}) {
   };
   const loaders = {
     matches: () => request('/api/results/matches', { ...pick(normalized, normalized.source === 'dixon-coles' ? ['source'] : ['league', 'season', 'source']), location: locationFor('matches') }),
-    players: () => request('/api/results/players', { ...pick(normalized, ['position', 'limit']), competition: normalized.competition || normalized.league, location: locationFor('players') }),
+    players: () => request('/api/results/players', { ...pick(normalized, ['position', 'season']), limit: normalized.limit ?? (page === 'players' ? 0 : 20), competition: normalized.competition || normalized.league, location: locationFor('players') }),
     simulation: () => request('/api/results/simulation', { ...pick(normalized, ['league']), location: locationFor('simulation') }),
     realTable: () => request('/api/results/real-table', pick(normalized, ['league'])),
     history: () => request('/api/results/history', { ...pick(normalized, ['league', 'season']), analysis: normalized.analysis || 'P6.2', location: locationFor('history') }),

@@ -158,6 +158,31 @@ public final class HistoryParser {
 
     // ---------------------------------------------------------------- P6.5
 
+    /** Shared strict dispatch for both HTTP reads and MySQL imports. */
+    public static List<HistoryRow> parseCareer(List<String> lines) {
+        List<HistoryRow> result = new ArrayList<HistoryRow>();
+        for (String line : lines) {
+            if (Tsv.isSkippable(line)) continue;
+            List<String> single = java.util.Collections.singletonList(line);
+            List<HistoryRow> parsed = parseCareerCurve(single);
+            if (parsed.isEmpty()) parsed = parseCareerClub(single);
+            if (parsed.isEmpty()) {
+                throw new IllegalArgumentException("Invalid P6.5 row: expected 7-column career or 8-column club-season data");
+            }
+            result.addAll(parsed);
+        }
+        return result;
+    }
+
+    private static boolean validCareerNumbers(String[] fields, int start) {
+        for (int i = start; i < fields.length; i++) {
+            double value = Tsv.toDouble(fields[i], Double.NaN);
+            if (!Double.isFinite(value) || value < 0) return false;
+            if (!(fields.length == 8 && i == 5) && value != Math.rint(value)) return false;
+        }
+        return true;
+    }
+
     /**
      * Career rows carry a composite key {@code player <TAB> source <TAB> season}
      * followed by four integer sums: {@code apps goals pens ogs}.
@@ -169,7 +194,10 @@ public final class HistoryParser {
                 continue;
             }
             String[] f = Tsv.split(line);
-            if (f.length < 7) {
+            if (f.length != 7 || f[0].trim().isEmpty()
+                    || !f[1].matches("club|intl|wc")
+                    || !(SeasonCode.isKnown(f[2]) || f[2].matches("(?:WC-)?(?:18|19|20)\\d{2}"))
+                    || !validCareerNumbers(f, 3)) {
                 continue;
             }
             HistoryRow row = new HistoryRow();
@@ -180,6 +208,7 @@ public final class HistoryParser {
             row.count = (long) Tsv.toDouble(f[3], 0d);  // appearances
             row.value = Tsv.toDouble(f[4], Double.NaN); // goals
             row.secondaryValue = Tsv.toDouble(f[5], Double.NaN); // penalties
+            row.secondaryMetric = "penalties";
             result.add(row);
         }
         return result;
@@ -190,7 +219,7 @@ public final class HistoryParser {
      * <TAB> goals <TAB> xG <TAB> assists <TAB> penGoals}.
      *
      * <p>Distinguished from {@link #parseCareerCurve} by column count and by the
-     * decimal xG in position 5, which the career rows never contain.
+     * season in position 1. Integer-valued xG is also legal.
      */
     public static List<HistoryRow> parseCareerClub(List<String> lines) {
         List<HistoryRow> result = new ArrayList<HistoryRow>();
@@ -199,7 +228,8 @@ public final class HistoryParser {
                 continue;
             }
             String[] f = Tsv.split(line);
-            if (f.length < 8) {
+            if (f.length != 8 || f[0].trim().isEmpty()
+                    || !SeasonCode.isKnown(f[1]) || !validCareerNumbers(f, 2)) {
                 continue;
             }
             HistoryRow row = new HistoryRow();
@@ -210,6 +240,7 @@ public final class HistoryParser {
             row.count = (long) Tsv.toDouble(f[2], 0d);   // appearances
             row.value = Tsv.toDouble(f[4], Double.NaN);  // goals
             row.secondaryValue = Tsv.toDouble(f[5], Double.NaN); // xG
+            row.secondaryMetric = "xg";
             result.add(row);
         }
         return result;

@@ -63,6 +63,8 @@ public final class HistoryRow {
     public String dimension;
     public double value;
     public double secondaryValue;
+    /** P6.5: xg or penalties, identifying the meaning of secondaryValue. */
+    public String secondaryMetric;
     public long count;
 
     public HistoryRow() {

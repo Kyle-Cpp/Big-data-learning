@@ -98,6 +98,14 @@ public class ImportController {
         return ResponseEntity.ok(response(report));
     }
 
+    /** Re-import player profiles without replacing the run's other modules. */
+    @PostMapping("/players/{runId}")
+    public ResponseEntity<Map<String, Object>> importPlayers(
+            @PathVariable String runId,
+            @RequestBody Map<String, String> body) {
+        return ResponseEntity.ok(response(importService.importPlayers(runId, body.get("location"))));
+    }
+
     @PostMapping("/history/{runId}")
     public ResponseEntity<Map<String, Object>> importHistory(
             @PathVariable String runId,

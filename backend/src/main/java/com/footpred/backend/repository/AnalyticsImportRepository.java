@@ -6,11 +6,10 @@ import com.footpred.backend.domain.SeasonSimulation;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Bulk import for player profiles, season simulations and history points.
@@ -31,88 +30,34 @@ public class AnalyticsImportRepository {
 
     // ---------------------------------------------------------- players
 
+    @Transactional
     public int replacePlayerProfiles(String runId, List<PlayerProfile> profiles) {
-        jdbc.update("DELETE FROM player_profile WHERE run_id = ?", runId);
-        if (profiles.isEmpty()) {
-            return 0;
-        }
-        // The reducer keys by (team, match, player), so a player who left and
-        // returned to the same club within one season produces two rows for the
-        // same (player, team). Collapse them by summing the counters, otherwise
-        // the unique key rejects the import.
-        Map<String, PlayerProfile> merged = new LinkedHashMap<String, PlayerProfile>();
+        // The MR reducer already aggregates a whole (season, team, player).
+        // Summing these rows would mix seasons and invalidate single-appearance
+        // minutes, lambda and probability. Preserve each row exactly.
+        java.util.Set<String> keys = new java.util.HashSet<String>();
+        List<Object[]> batch = new ArrayList<Object[]>(profiles.size());
         for (PlayerProfile p : profiles) {
-            String key = p.playerId + "\u0000" + (p.teamName == null ? "" : p.teamName);
-            PlayerProfile existing = merged.get(key);
-            if (existing == null) {
-                merged.put(key, copyOf(p));
-            } else {
-                // Order statistics and counts add up; rates are re-weighted by
-                // minutes so a 30-minute cameo cannot outweigh a full season.
-                existing.appearances += p.appearances;
-                existing.starts += p.starts;
-                existing.minutes += p.minutes;
-                existing.shots += p.shots;
-                existing.goals += p.goals;
-                existing.xg += p.xg;
-                existing.expectedMinutes += p.expectedMinutes;
-                existing.expectedGoals += p.expectedGoals;
-                double totalMinutes = existing.minutes;
-                if (totalMinutes > 0) {
-                    existing.shrunkXgPer90 =
-                            (existing.shrunkXgPer90 * (totalMinutes - p.minutes)
-                                    + p.shrunkXgPer90 * p.minutes) / totalMinutes;
-                }
-                existing.rowCount += 1;
+            if (p.season == null || p.season.isEmpty() || p.teamId < 0 || p.playerId < 0) {
+                throw new IllegalArgumentException("Player profile requires season, teamId and playerId");
             }
-        }
-        List<Object[]> batch = new ArrayList<Object[]>(merged.size());
-        for (PlayerProfile p : merged.values()) {
-            // No duplicate was merged for this player, so every derived figure is
-            // exactly what the reducer computed — copying it unchanged keeps the
-            // stored values comparable with the model's own output.
-            boolean untouched = p.rowCount == 1;
-            double xg90 = untouched
-                    ? p.xgPer90
-                    : (p.minutes > 0 ? p.xg * 90.0 / p.minutes : 0.0);
-            double shrunk = untouched
-                    ? p.shrunkXgPer90
-                    : p.shrunkXgPer90;   // already minute-weighted during merge
+            String key = p.season + "|" + p.teamId + "|" + p.playerId;
+            if (!keys.add(key)) {
+                throw new IllegalArgumentException("Duplicate player profile: " + key);
+            }
             batch.add(new Object[]{
-                    runId, p.playerId, p.playerName, p.teamName, p.competition, p.position,
+                    runId, p.season, p.teamId, p.playerId, p.playerName, p.teamName, p.competition, p.position,
                     p.appearances, p.starts, p.minutes, p.shots, p.goals,
-                    p.xg, num(xg90), num(shrunk), num(p.expectedMinutes),
+                    p.xg, num(p.xgPer90), num(p.shrunkXgPer90), num(p.expectedMinutes),
                     num(p.expectedGoals), num(p.goalProbability)
             });
         }
-        jdbc.batchUpdate("INSERT INTO player_profile (run_id, player_id, player_name, team_name,"
+        jdbc.update("DELETE FROM player_profile WHERE run_id = ?", runId);
+        jdbc.batchUpdate("INSERT INTO player_profile (run_id, season, team_id, player_id, player_name, team_name,"
                 + " competition, position, appearances, starts, minutes, shots, goals, xg,"
                 + " xg_per90, shrunk_xg_per90, expected_minutes, lambda, goal_probability)"
-                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", batch);
+                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", batch);
         return batch.size();
-    }
-
-    private static PlayerProfile copyOf(PlayerProfile source) {
-        PlayerProfile copy = new PlayerProfile();
-        copy.teamId = source.teamId;
-        copy.matchId = source.matchId;
-        copy.playerId = source.playerId;
-        copy.playerName = source.playerName;
-        copy.teamName = source.teamName;
-        copy.competition = source.competition;
-        copy.position = source.position;
-        copy.appearances = source.appearances;
-        copy.starts = source.starts;
-        copy.minutes = source.minutes;
-        copy.shots = source.shots;
-        copy.goals = source.goals;
-        copy.xg = source.xg;
-        copy.xgPer90 = source.xgPer90;
-        copy.shrunkXgPer90 = source.shrunkXgPer90;
-        copy.expectedMinutes = source.expectedMinutes;
-        copy.expectedGoals = source.expectedGoals;
-        copy.goalProbability = source.goalProbability;
-        return copy;
     }
 
     // ------------------------------------------------------- simulation

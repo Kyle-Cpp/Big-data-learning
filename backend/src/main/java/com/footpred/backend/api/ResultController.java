@@ -64,6 +64,13 @@ public class ResultController {
     @Value("${footpred.result.matches:}")
     private String matchesLocation;
 
+    /** DC fixtures have their own format and must never fall back to RF output. */
+    @Value("${footpred.result.matches.dixon-coles:}")
+    private String dixonColesMatchesLocation;
+
+    @Value("${footpred.result.matches.dixon-coles.note:}")
+    private String dixonColesMatchesNote;
+
     /** Default location for {@code /api/results/players}. */
     @Value("${footpred.result.players:}")
     private String playersLocation;
@@ -110,7 +117,7 @@ public class ResultController {
      * Match predictions.
      *
      * @param source {@code random-forest} (handoff back-test) or
-     *               {@code dixon-coles} (partner forward fixtures); both when absent
+     *               {@code dixon-coles} (partner forward fixtures); RF when absent
      * @param location explicit override, otherwise the configured default
      */
     @GetMapping("/matches")
@@ -124,33 +131,81 @@ public class ResultController {
         String effectiveSource = source == null || source.trim().isEmpty()
                 ? MatchPredictionParser.SOURCE_RANDOM_FOREST
                 : source.trim();
+        if (!MatchPredictionParser.SOURCE_RANDOM_FOREST.equals(effectiveSource)
+                && !MatchPredictionParser.SOURCE_DIXON_COLES.equals(effectiveSource)) {
+            Map<String, Object> error = new LinkedHashMap<String, Object>();
+            error.put("error", "unsupported-prediction-source");
+            error.put("message", "source must be random-forest or dixon-coles");
+            return ResponseEntity.badRequest().body(error);
+        }
         String target = location != null && !location.trim().isEmpty()
                 ? location.trim()
-                : (matchesLocation == null ? "" : matchesLocation);
+                : defaultPredictionsLocation(effectiveSource);
+        if (target == null || target.trim().isEmpty()) {
+            return ResponseEntity.ok(unavailablePredictions(effectiveSource,
+                    "prediction-location-not-configured",
+                    "Configure the result file for this prediction source in backend settings."));
+        }
 
-        List<String> lines = reader.readAllLines(defaultPredictionsLocation(effectiveSource, target));
+        List<String> lines = reader.readAllLines(target);
+        boolean hasData = false;
+        for (String line : lines) {
+            if (line != null && !line.trim().isEmpty() && !line.trim().startsWith("#")) {
+                hasData = true;
+                break;
+            }
+        }
+        if (!hasData) {
+            return ResponseEntity.ok(unavailablePredictions(effectiveSource,
+                    "prediction-results-missing-or-empty",
+                    "The prediction file is missing or empty. Export the real output or choose its location."));
+        }
         List<MatchPrediction> predictions = MatchPredictionParser.SOURCE_DIXON_COLES
                 .equals(effectiveSource)
                 ? MatchPredictionParser.parseDixonColesPrediction(lines)
                 : MatchPredictionParser.parseRandomForestPrediction(lines);
+        if (predictions.isEmpty()) {
+            Map<String, Object> error = unavailablePredictions(effectiveSource,
+                    "invalid-prediction-format",
+                    "The result file has no valid rows for " + effectiveSource
+                            + ". Check its format and probability values.");
+            return ResponseEntity.unprocessableEntity().body(error);
+        }
 
         predictions = filterMatches(predictions, league, season);
 
         Map<String, Object> payload = new LinkedHashMap<String, Object>();
         payload.put("source", effectiveSource);
+        payload.put("available", true);
         payload.put("count", predictions.size());
         payload.put("accuracy", accuracy(predictions));
         payload.put("items", predictions);
+        if (MatchPredictionParser.SOURCE_DIXON_COLES.equals(effectiveSource)
+                && (location == null || location.trim().isEmpty())
+                && dixonColesMatchesNote != null && !dixonColesMatchesNote.trim().isEmpty()) {
+            payload.put("note", dixonColesMatchesNote.trim());
+        }
         return ResponseEntity.ok(payload);
     }
 
-    private String defaultPredictionsLocation(String source, String configured) {
+    private String defaultPredictionsLocation(String source) {
         if (MatchPredictionParser.SOURCE_DIXON_COLES.equals(source)) {
-            // Partner predictions live beside the model in an explicit --out dir;
-            // there is no stable default, so the caller must supply one.
-            return configured;
+            return dixonColesMatchesLocation;
         }
-        return configured;
+        return matchesLocation;
+    }
+
+    private Map<String, Object> unavailablePredictions(String source, String code, String message) {
+        Map<String, Object> payload = new LinkedHashMap<String, Object>();
+        payload.put("source", source);
+        payload.put("available", false);
+        payload.put("count", 0);
+        payload.put("accuracy", null);
+        payload.put("items", Collections.emptyList());
+        payload.put("error", code);
+        payload.put("message", message);
+        payload.put("note", message);
+        return payload;
     }
 
     private List<MatchPrediction> filterMatches(List<MatchPrediction> predictions,
@@ -195,6 +250,7 @@ public class ResultController {
     @GetMapping("/players")
     public ResponseEntity<Map<String, Object>> players(
             @RequestParam(value = "competition", required = false) String competition,
+            @RequestParam(value = "season", required = false) String season,
             @RequestParam(value = "position", required = false) String position,
             @RequestParam(value = "limit", defaultValue = "100") int limit,
             @RequestParam(value = "location", required = false) String location)
@@ -206,61 +262,51 @@ public class ResultController {
             Map<String, Object> empty = new LinkedHashMap<String, Object>();
             empty.put("count", 0);
             empty.put("items", Collections.emptyList());
+            empty.put("seasons", Collections.emptyList());
             empty.put("note", "no location configured for module-3 player output");
             return ResponseEntity.ok(empty);
         }
         List<PlayerProfile> profiles = PlayerProfileParser.parse(reader.readAllLines(target));
-        profiles = filterPlayers(profiles, competition, position);
-        // The reducer emits one row per (team, match, player), so an unbounded
-        // ranking list would show the same player repeatedly. Collapse to one
-        // row per (player, team), preferring the row with the most minutes so the
-        // displayed rates belong to the largest sample.
-        profiles = collapseByPlayerAndTeam(profiles);
+        java.util.Set<String> seasons = new java.util.TreeSet<String>(Collections.reverseOrder());
+        for (PlayerProfile profile : profiles) {
+            seasons.add(profile.season);
+        }
+        profiles = filterPlayers(profiles, competition, season, position);
         Collections.sort(profiles, new Comparator<PlayerProfile>() {
             @Override
             public int compare(PlayerProfile a, PlayerProfile b) {
                 return Double.compare(b.shrunkXgPer90, a.shrunkXgPer90);
             }
         });
+        int totalCount = profiles.size();
         if (limit > 0 && profiles.size() > limit) {
             profiles = new ArrayList<PlayerProfile>(profiles.subList(0, limit));
         }
         Map<String, Object> payload = new LinkedHashMap<String, Object>();
         payload.put("count", profiles.size());
+        payload.put("totalCount", totalCount);
+        payload.put("seasons", new ArrayList<String>(seasons));
         payload.put("items", profiles);
         return ResponseEntity.ok(payload);
     }
 
-    /**
-     * Collapses duplicate (player, team) rows left by the per-match reducer key.
-     *
-     * <p>Keeps the row with the most minutes: that is the largest sample, so its
-     * xG/90 and shrinkage reflect the season rather than a single cameo.
-     */
-    private List<PlayerProfile> collapseByPlayerAndTeam(List<PlayerProfile> profiles) {
-        java.util.Map<String, PlayerProfile> best = new java.util.LinkedHashMap<String, PlayerProfile>();
-        for (PlayerProfile profile : profiles) {
-            String key = profile.playerId + " "
-                    + (profile.teamName == null ? "" : profile.teamName);
-            PlayerProfile existing = best.get(key);
-            if (existing == null || profile.minutes > existing.minutes) {
-                best.put(key, profile);
-            }
-        }
-        return new ArrayList<PlayerProfile>(best.values());
-    }
-
     private List<PlayerProfile> filterPlayers(List<PlayerProfile> profiles,
-                                              String competition, String position) {        if (competition == null && position == null) {
-            return profiles;
-        }
+                                              String competition, String season, String position) {
+        String leagueFilter = competition == null || competition.trim().isEmpty()
+                ? null : LeagueCode.canonical(competition);
+        String seasonFilter = season == null || season.trim().isEmpty()
+                ? null : SeasonCode.canonical(season);
         List<PlayerProfile> filtered = new ArrayList<PlayerProfile>();
         for (PlayerProfile profile : profiles) {
-            if (competition != null && !competition.equalsIgnoreCase(profile.competition)) {
+            if (leagueFilter != null && !leagueFilter.equalsIgnoreCase(LeagueCode.canonical(profile.competition))) {
+                continue;
+            }
+            if (seasonFilter != null && !seasonFilter.equals(profile.season)) {
                 continue;
             }
             if (position != null && (profile.position == null
-                    || !profile.position.toLowerCase().contains(position.toLowerCase()))) {
+                    || !profile.position.toLowerCase(java.util.Locale.ROOT)
+                    .contains(position.toLowerCase(java.util.Locale.ROOT)))) {
                 continue;
             }
             filtered.add(profile);
@@ -388,11 +434,14 @@ public class ResultController {
         location = effectiveLocation;
         List<String> lines = reader.readAllLines(location.trim());
         List<HistoryRow> rows = dispatchHistory(kind, lines);
+        java.util.Set<String> seasons = new java.util.TreeSet<String>(Collections.reverseOrder());
+        for (HistoryRow row : rows) if (row.season != null) seasons.add(row.season);
         rows = filterHistory(rows, league, season);
 
         Map<String, Object> payload = new LinkedHashMap<String, Object>();
         payload.put("analysis", kind.officialId());
         payload.put("order", kind.commandName());
+        payload.put("seasons", new ArrayList<String>(seasons));
         payload.put("count", rows.size());
         payload.put("items", rows);
         return ResponseEntity.ok(payload);
@@ -409,7 +458,7 @@ public class ResultController {
             case HEAD_TO_HEAD:
                 return HistoryParser.parseHeadToHead(lines);
             case CAREER_CURVE:
-                return parseCareer(lines);
+                return HistoryParser.parseCareer(lines);
             case LEAGUE_STYLE:
                 return HistoryParser.parseLeagueStyle(lines);
             case SCORE_DIFFERENCE:
@@ -419,18 +468,6 @@ public class ResultController {
             default:
                 return Collections.emptyList();
         }
-    }
-
-    /**
-     * P6.5 writes two different files: a career table and a club-season table.
-     * The column count tells them apart, so both can be served from one endpoint.
-     */
-    private List<HistoryRow> parseCareer(List<String> lines) {
-        List<HistoryRow> career = HistoryParser.parseCareerCurve(lines);
-        if (!career.isEmpty()) {
-            return career;
-        }
-        return HistoryParser.parseCareerClub(lines);
     }
 
     private List<HistoryRow> filterHistory(List<HistoryRow> rows, String league, String season) {

@@ -121,6 +121,8 @@ CREATE TABLE IF NOT EXISTS evaluation_metric (
 CREATE TABLE IF NOT EXISTS player_profile (
   id               BIGINT      NOT NULL AUTO_INCREMENT,
   run_id           VARCHAR(64) NOT NULL,
+  season           VARCHAR(16) NOT NULL,
+  team_id          INT         NOT NULL,
   player_id        INT         NOT NULL,
   player_name      VARCHAR(128)    NULL,
   team_name        VARCHAR(96)     NULL,
@@ -138,10 +140,8 @@ CREATE TABLE IF NOT EXISTS player_profile (
   lambda           DECIMAL(10,6)   NULL,
   goal_probability DECIMAL(10,6)   NULL,
   PRIMARY KEY (id),
-  -- A player can appear under more than one team in a season (a transfer), and
-  -- the reducer keys rows by team|match|player, so the natural key must include
-  -- the team. Keying on player_id alone rejects legitimate rows.
-  UNIQUE KEY uk_run_player_team (run_id, player_id, team_name),
+  -- One reducer profile per season, team and player. Never merge seasons.
+  UNIQUE KEY uk_run_season_team_player (run_id, season, team_id, player_id),
   KEY idx_rank (run_id, shrunk_xg_per90)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='球员 xG 画像';
 

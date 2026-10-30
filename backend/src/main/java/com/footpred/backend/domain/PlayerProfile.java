@@ -4,16 +4,16 @@ package com.footpred.backend.domain;
  * One player's xG profile (Job P4.4, handoff package).
  *
  * <p>Column order follows {@code PlayerGoalProfileJob.ProfileReducer}, whose
- * reducer key is {@code teamId|matchId|playerId} and whose value repeats the
+ * reducer key is {@code season|teamId|playerId} and whose value repeats the
  * identifiers so downstream consumers never have to parse the key:
- * {@code teamId matchId playerId competition teamName playerName position
+ * {@code season teamId playerId competition teamName playerName position
  * appearances starts minutes shots goals xg xg90 shrunkXg90 expectedMinutes
  * lambda goalProbability}.
  */
 public class PlayerProfile {
 
+    public String season;
     public int teamId;
-    public String matchId;
     public int playerId;
     public String playerName;
     public String teamName;
@@ -34,15 +34,6 @@ public class PlayerProfile {
     public double expectedGoals;
     /** Probability of scoring at least once in the projected appearance. */
     public double goalProbability;
-
-    /**
-     * How many reducer rows this profile was built from.
-     *
-     * <p>Not a field of the TSV: the importer sets it to 1 for every parsed row
-     * and increments it while merging, so downstream code can tell whether any
-     * derived rate needs recomputing.
-     */
-    public int rowCount = 1;
 
     public PlayerProfile() {
     }
