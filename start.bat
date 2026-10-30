@@ -1,40 +1,20 @@
 @echo off
 setlocal
 cd /d "%~dp0"
-
-echo ============================================
-echo   FootPred Football Analytics Platform
-echo ============================================
-echo.
-
-if not exist "target\footpred-backend-1.0.0.jar" (
-    echo [ERROR] target\footpred-backend-1.0.0.jar not found
-    echo         Build it with:  cd backend ^&^& mvn clean package
-    pause
-    exit /b 1
+set "APP_JAR=backend\target\footpred-backend-1.0.0.jar"
+if not exist "%APP_JAR%" (
+  echo [ERROR] Build first: mvn -f backend/pom.xml package
+  exit /b 1
 )
-
 where java >nul 2>nul
 if errorlevel 1 (
-    echo [ERROR] java not found. Install Java 8 or Java 17 first.
-    pause
-    exit /b 1
+  echo [ERROR] Java not found. Use JDK 11 for the verified build.
+  exit /b 1
 )
-
-echo   URL:    http://127.0.0.1:8080
-echo   Stop:   Ctrl + C
-echo.
-echo   Default shows sample data.
-echo   Switch to "Live" in the top-right corner for real results.
-echo ============================================
-echo.
-
-java -jar target\footpred-backend-1.0.0.jar --server.port=8080
-
-if errorlevel 1 (
-    echo.
-    echo [TIP] If port 8080 is busy, try:
-    echo       java -jar target\footpred-backend-1.0.0.jar --server.port=8081
-    pause
+echo Open http://127.0.0.1:8080/?mode=live
+if exist "application-local.properties" (
+  java -jar "%APP_JAR%" --spring.config.additional-location=file:./application-local.properties %*
+) else (
+  java -jar "%APP_JAR%" %*
 )
-endlocal
+exit /b %errorlevel%

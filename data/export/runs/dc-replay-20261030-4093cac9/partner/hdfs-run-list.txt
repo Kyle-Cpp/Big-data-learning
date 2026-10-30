@@ -1,0 +1,5 @@
+Found 4 items
+drwxr-xr-x   - root supergroup          0 2026-10-29 20:12 /FootPred/module1/runs/dc-replay-20261030-4093cac9/input
+drwxr-xr-x   - root supergroup          0 2026-10-29 20:13 /FootPred/module1/runs/dc-replay-20261030-4093cac9/models
+drwxr-xr-x   - root supergroup          0 2026-10-29 20:13 /FootPred/module1/runs/dc-replay-20261030-4093cac9/predictions-clubs
+drwxr-xr-x   - root supergroup          0 2026-10-29 20:13 /FootPred/module1/runs/dc-replay-20261030-4093cac9/predictions-national

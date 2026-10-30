@@ -1,0 +1,8 @@
+# Copy to application-local.properties; the private copy is ignored by Git.
+server.address=127.0.0.1
+server.port=8080
+footpred.mysql.enabled=true
+footpred.job.enabled=false
+spring.datasource.url=jdbc:mysql://127.0.0.1:3306/footpred?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+spring.datasource.username=YOUR_MYSQL_USER
+spring.datasource.password=CHANGE_ME

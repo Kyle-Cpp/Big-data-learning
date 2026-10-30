@@ -1,20 +1,12 @@
 #!/usr/bin/env bash
-# FootPred 一键启动（Linux / macOS / Git Bash）
 set -euo pipefail
 cd "$(dirname "$0")"
-
-JAR="target/footpred-backend-1.0.0.jar"
-PORT="${PORT:-8080}"
-
-[ -f "$JAR" ] || { echo "[错误] 找不到 $JAR"; exit 1; }
-command -v java >/dev/null || { echo "[错误] 未找到 java，请先安装 Java 8 或 Java 17"; exit 1; }
-
-echo "============================================"
-echo " FootPred 足球大数据分析平台"
-echo "============================================"
-echo
-echo " 启动后打开： http://127.0.0.1:${PORT}"
-echo " 停止服务：   Ctrl + C"
-echo
-
-exec java -jar "$JAR" --server.port="$PORT"
+APP_JAR="backend/target/footpred-backend-1.0.0.jar"
+[[ -f "$APP_JAR" ]] || { echo "Build first: mvn -f backend/pom.xml package"; exit 1; }
+command -v java >/dev/null || { echo "Java not found; use JDK 11 for the verified build."; exit 1; }
+APP_ARGS=()
+if [[ -f application-local.properties ]]; then
+  APP_ARGS+=(--spring.config.additional-location=file:./application-local.properties)
+fi
+echo "Open http://127.0.0.1:${PORT:-8080}/?mode=live"
+exec java -jar "$APP_JAR" "${APP_ARGS[@]}" --server.port="${PORT:-8080}" "$@"

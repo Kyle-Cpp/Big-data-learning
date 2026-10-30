@@ -10,7 +10,7 @@ for (const asset of ['app.js', 'styles.css', 'favicon.svg']) {
   if (!html.includes(asset)) throw new Error(`Missing entry asset: ${asset}`);
   await readFile(resolve(root, 'dist', asset));
 }
-const destination = resolve(root, '../src/main/resources/static');
+const destination = resolve(root, '../backend/src/main/resources/static');
 await mkdir(destination, { recursive: true });
 for (const file of await readdir(resolve(root, 'dist'))) {
   const output = resolve(destination, file);

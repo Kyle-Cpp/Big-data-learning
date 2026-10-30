@@ -114,10 +114,12 @@ test('live requests follow controller parameter names and do not silently use ex
     urls.push(url);
     return new Response(JSON.stringify({ count: 0, items: [] }));
   };
-  await fetchPageData('players', { baseURL: 'http://localhost:8080', paths: { players: 'hdfs:///players' }, fetchImpl }, { league: '英超', position: 'FW' });
+  await fetchPageData('players', { baseURL: 'http://localhost:8080', paths: { players: 'hdfs:///players' }, fetchImpl }, { league: '英超', position: 'FW', season: '1516' });
   const url = new URL(urls[0]);
   assert.equal(url.pathname, '/api/results/players');
   assert.equal(url.searchParams.get('competition'), 'Premier League');
+  assert.equal(url.searchParams.get('season'), '2015-16');
+  assert.equal(url.searchParams.get('limit'), '0');
   assert.equal(url.searchParams.get('location'), 'hdfs:///players');
   await assert.rejects(fetchPageData('matches', { mode: 'live', fetchImpl: async () => { throw new Error('offline'); } }), error => error.code === 'network-error');
 });

@@ -1,0 +1,125 @@
+{
+  "stage": "D:\\Projects\\MR\\review\\dc-replay-20261030-4093cac9",
+  "archive": "D:\\Projects\\MR\\review\\dc-replay-20261030-4093cac9.tar.gz",
+  "runId": "dc-replay-20261030-4093cac9",
+  "hdfsRun": "/FootPred/module1/runs/dc-replay-20261030-4093cac9",
+  "linuxDirectory": "/data/dc-replay-20261030-4093cac9",
+  "upstreamCommit": "331f80e7f8e3b96d8a64e92f5e7cfd8b313d1cb0",
+  "predictionMode": "Real map-only Hadoop MR prediction; pretrained models; demonstration fixtures; no retraining",
+  "nationalFixtures": 6,
+  "clubFixtures": 5,
+  "rawLeagueCsvFiles": 165,
+  "leagueMatches": 59079,
+  "rawNationalMatches": 49945,
+  "rawFilesAreUploadedToHdfs": true,
+  "checks": [
+    {
+      "kind": "national",
+      "rows": 6,
+      "jobIds": [
+        "job_1793329634322_0001"
+      ],
+      "applicationIds": [
+        "application_1793329634322_0001"
+      ],
+      "predictionSha256": "68459b1c27cdbc30d3ae66d80549f25ec5383a9cf0720fc56958cec3c3932bfc",
+      "modelSha256": "7100d41ccc90b189ec6adca0d886556e26a1980196bb885545a2dde8ec0c4df3",
+      "independentFormulaCheck": true
+    },
+    {
+      "kind": "clubs",
+      "rows": 5,
+      "jobIds": [
+        "job_1793329634322_0002"
+      ],
+      "applicationIds": [
+        "application_1793329634322_0002"
+      ],
+      "predictionSha256": "3fc6b2d9d7b7ab1f415d3c79578ae239379a6b20b94b366870052c8ca90ddbd9",
+      "modelSha256": "716b61502d34242fc2d9ceaa7ee0c4b0aaa6ce3ecba18a562665680a17da8c61",
+      "independentFormulaCheck": true
+    }
+  ],
+  "predictions": [
+    {
+      "match": "Argentina vs France",
+      "model": "national",
+      "pHome": 0.4181,
+      "pDraw": 0.3019,
+      "pAway": 0.28
+    },
+    {
+      "match": "Brazil vs Germany",
+      "model": "national",
+      "pHome": 0.4187,
+      "pDraw": 0.2814,
+      "pAway": 0.3
+    },
+    {
+      "match": "Spain vs England",
+      "model": "national",
+      "pHome": 0.4118,
+      "pDraw": 0.278,
+      "pAway": 0.3103
+    },
+    {
+      "match": "Japan vs Morocco",
+      "model": "national",
+      "pHome": 0.4199,
+      "pDraw": 0.2896,
+      "pAway": 0.2905
+    },
+    {
+      "match": "France vs Brazil",
+      "model": "national",
+      "pHome": 0.4865,
+      "pDraw": 0.2585,
+      "pAway": 0.2551
+    },
+    {
+      "match": "England vs Australia",
+      "model": "national",
+      "pHome": 0.3339,
+      "pDraw": 0.309,
+      "pAway": 0.3571
+    },
+    {
+      "match": "Arsenal vs Chelsea",
+      "model": "clubs",
+      "pHome": 0.5431,
+      "pDraw": 0.2443,
+      "pAway": 0.2126
+    },
+    {
+      "match": "Barcelona vs Real Madrid",
+      "model": "clubs",
+      "pHome": 0.4446,
+      "pDraw": 0.247,
+      "pAway": 0.3084
+    },
+    {
+      "match": "Bayern Munich vs Dortmund",
+      "model": "clubs",
+      "pHome": 0.6397,
+      "pDraw": 0.1782,
+      "pAway": 0.182
+    },
+    {
+      "match": "Inter vs Juventus",
+      "model": "clubs",
+      "pHome": 0.505,
+      "pDraw": 0.2716,
+      "pAway": 0.2233
+    },
+    {
+      "match": "Paris SG vs Marseille",
+      "model": "clubs",
+      "pHome": 0.6458,
+      "pDraw": 0.1922,
+      "pAway": 0.1621
+    }
+  ],
+  "displayNote": "These are demonstration pairings, not verified upcoming fixtures. No actual outcome/accuracy is assigned.",
+  "formatNote": "Upstream ScoreMatrixCalculator writes probabilities to 4 decimal places; rounding is preserved.",
+  "sourceModelRoot": "https://github.com/PeidongLiu05/FootPred_hadoop_mapreduce/tree/331f80e7f8e3b96d8a64e92f5e7cfd8b313d1cb0/models"
+}

@@ -1,0 +1,1491 @@
+{
+  "modelType" : "DixonColes",
+  "version" : 1,
+  "scoreConvention" : "including-extra-time",
+  "nTeams" : 295,
+  "homeAdv" : 0.39739893171957935,
+  "rho" : -0.024935163094560314,
+  "refEpochDay" : 20270,
+  "halfLifeDays" : 730.0,
+  "sigma2" : 0.1,
+  "iterations" : 9068,
+  "finalLL" : -6860.8775903,
+  "weightedCount" : 2443.910497,
+  "trainedAt" : "2026-10-17T18:10:42.61",
+  "teams" : [ {
+    "idx" : 0,
+    "name" : "Abkhazia",
+    "attack" : -0.0015678893128214099,
+    "defense" : -0.15331951317753786
+  }, {
+    "idx" : 1,
+    "name" : "Afghanistan",
+    "attack" : -0.29668821393803946,
+    "defense" : 0.2523476460334715
+  }, {
+    "idx" : 2,
+    "name" : "Albania",
+    "attack" : -0.12544977630943413,
+    "defense" : -0.23658835546502477
+  }, {
+    "idx" : 3,
+    "name" : "Alderney",
+    "attack" : -0.1561503113545201,
+    "defense" : 0.1609724647695146
+  }, {
+    "idx" : 4,
+    "name" : "Algeria",
+    "attack" : 0.6022378630607399,
+    "defense" : -0.2709100630644603
+  }, {
+    "idx" : 5,
+    "name" : "American Samoa",
+    "attack" : -0.3534653560383992,
+    "defense" : 1.0132080930418683
+  }, {
+    "idx" : 6,
+    "name" : "Andorra",
+    "attack" : -0.78635235180799,
+    "defense" : 0.27321273516420574
+  }, {
+    "idx" : 7,
+    "name" : "Angola",
+    "attack" : -0.01524619229587331,
+    "defense" : -0.3234012259017582
+  }, {
+    "idx" : 8,
+    "name" : "Anguilla",
+    "attack" : -0.7435870340748792,
+    "defense" : 0.863616925246401
+  }, {
+    "idx" : 9,
+    "name" : "Antigua and Barbuda",
+    "attack" : -0.4672255443539906,
+    "defense" : 0.4912078562313447
+  }, {
+    "idx" : 10,
+    "name" : "Argentina",
+    "attack" : 0.6520008936363949,
+    "defense" : -0.6883645466641581
+  }, {
+    "idx" : 11,
+    "name" : "Armenia",
+    "attack" : -0.10909889193663921,
+    "defense" : 0.38009698183423063
+  }, {
+    "idx" : 12,
+    "name" : "Artsakh",
+    "attack" : -0.09157915795523391,
+    "defense" : -0.08356227370522377
+  }, {
+    "idx" : 13,
+    "name" : "Aruba",
+    "attack" : -0.16176766289482533,
+    "defense" : 0.42061340969527605
+  }, {
+    "idx" : 14,
+    "name" : "Australia",
+    "attack" : 0.5756766226633042,
+    "defense" : -0.5685263032511891
+  }, {
+    "idx" : 15,
+    "name" : "Austria",
+    "attack" : 0.3771816334019965,
+    "defense" : -0.23738289429524528
+  }, {
+    "idx" : 16,
+    "name" : "Aymara",
+    "attack" : -0.13782900052455477,
+    "defense" : -0.04733737577960804
+  }, {
+    "idx" : 17,
+    "name" : "Azerbaijan",
+    "attack" : -0.3241943754272557,
+    "defense" : 0.24799950486225172
+  }, {
+    "idx" : 18,
+    "name" : "Bahamas",
+    "attack" : -0.26290470371766517,
+    "defense" : 0.8920426915099148
+  }, {
+    "idx" : 19,
+    "name" : "Bahrain",
+    "attack" : 0.09453782904239796,
+    "defense" : -0.19880988599897265
+  }, {
+    "idx" : 20,
+    "name" : "Bangladesh",
+    "attack" : -0.46517142970924197,
+    "defense" : 0.33639412377889377
+  }, {
+    "idx" : 21,
+    "name" : "Barawa",
+    "attack" : -0.12062535064719146,
+    "defense" : 0.06902422626898384
+  }, {
+    "idx" : 22,
+    "name" : "Barbados",
+    "attack" : -0.05370939704131885,
+    "defense" : 0.4955080207284268
+  }, {
+    "idx" : 23,
+    "name" : "Basque Country",
+    "attack" : -0.09728522048337077,
+    "defense" : -0.1314872467669667
+  }, {
+    "idx" : 24,
+    "name" : "Belarus",
+    "attack" : -0.17634437147721382,
+    "defense" : 0.056645018989200484
+  }, {
+    "idx" : 25,
+    "name" : "Belgium",
+    "attack" : 0.5085441395771757,
+    "defense" : -0.32752213708198147
+  }, {
+    "idx" : 26,
+    "name" : "Belize",
+    "attack" : -0.3296723243294055,
+    "defense" : 0.25655588756217373
+  }, {
+    "idx" : 27,
+    "name" : "Benin",
+    "attack" : 0.010737412070919772,
+    "defense" : -0.06538022515711392
+  }, {
+    "idx" : 28,
+    "name" : "Bermuda",
+    "attack" : 0.19798601471262745,
+    "defense" : 0.41061794748060887
+  }, {
+    "idx" : 29,
+    "name" : "Bhutan",
+    "attack" : -0.47914106574107573,
+    "defense" : 0.5396779046679325
+  }, {
+    "idx" : 30,
+    "name" : "Biafra",
+    "attack" : -0.1339803667262534,
+    "defense" : -0.1615630863076539
+  }, {
+    "idx" : 31,
+    "name" : "Bolivia",
+    "attack" : 0.07327560684199028,
+    "defense" : 0.22797197708699662
+  }, {
+    "idx" : 32,
+    "name" : "Bonaire",
+    "attack" : -0.2862783171252726,
+    "defense" : 0.3474985710544168
+  }, {
+    "idx" : 33,
+    "name" : "Bosnia and Herzegovina",
+    "attack" : -0.20968532024823458,
+    "defense" : 0.09583214391877033
+  }, {
+    "idx" : 34,
+    "name" : "Botswana",
+    "attack" : -0.14709190621869492,
+    "defense" : -0.08369921105327784
+  }, {
+    "idx" : 35,
+    "name" : "Brazil",
+    "attack" : 0.5416715843370306,
+    "defense" : -0.5519088167227494
+  }, {
+    "idx" : 36,
+    "name" : "British Virgin Islands",
+    "attack" : -0.6073354638120156,
+    "defense" : 0.518749981835064
+  }, {
+    "idx" : 37,
+    "name" : "Brunei",
+    "attack" : -0.37945949072919977,
+    "defense" : 0.6798533734445164
+  }, {
+    "idx" : 38,
+    "name" : "Bulgaria",
+    "attack" : -0.25942180134857845,
+    "defense" : 0.11358896044907085
+  }, {
+    "idx" : 39,
+    "name" : "Burkina Faso",
+    "attack" : 0.3281162610564537,
+    "defense" : -0.1415360407130356
+  }, {
+    "idx" : 40,
+    "name" : "Burundi",
+    "attack" : 0.11024587248898841,
+    "defense" : 0.10419872078886784
+  }, {
+    "idx" : 41,
+    "name" : "Cambodia",
+    "attack" : -0.2009816555745278,
+    "defense" : 0.516755000257741
+  }, {
+    "idx" : 42,
+    "name" : "Cameroon",
+    "attack" : 0.2221697745722916,
+    "defense" : -0.27457242289462697
+  }, {
+    "idx" : 43,
+    "name" : "Canada",
+    "attack" : 0.605555031100707,
+    "defense" : -0.3996261887894751
+  }, {
+    "idx" : 44,
+    "name" : "Canton Ticino",
+    "attack" : -0.13320955209405405,
+    "defense" : 0.23108763518084072
+  }, {
+    "idx" : 45,
+    "name" : "Cape Verde",
+    "attack" : -0.013741891602625617,
+    "defense" : -0.2563483143821229
+  }, {
+    "idx" : 46,
+    "name" : "Cascadia",
+    "attack" : -0.009650659620889398,
+    "defense" : -0.07011599010750212
+  }, {
+    "idx" : 47,
+    "name" : "Catalonia",
+    "attack" : -0.11090652996382495,
+    "defense" : -0.11431029712846436
+  }, {
+    "idx" : 48,
+    "name" : "Cayman Islands",
+    "attack" : -0.5395212508548082,
+    "defense" : 0.52841509236471
+  }, {
+    "idx" : 49,
+    "name" : "Central African Republic",
+    "attack" : 0.16015728085317207,
+    "defense" : 0.16915899860092234
+  }, {
+    "idx" : 50,
+    "name" : "Chad",
+    "attack" : -0.4765513224237202,
+    "defense" : 0.1573268259907561
+  }, {
+    "idx" : 51,
+    "name" : "Chagos Islands",
+    "attack" : -0.08818879360765491,
+    "defense" : 0.1332757195112928
+  }, {
+    "idx" : 52,
+    "name" : "Chameria",
+    "attack" : 0.0532191978635385,
+    "defense" : -0.06293479831840472
+  }, {
+    "idx" : 53,
+    "name" : "Chile",
+    "attack" : -0.02989845407000931,
+    "defense" : -0.1928616650882443
+  }, {
+    "idx" : 54,
+    "name" : "China",
+    "attack" : -0.006516080589345705,
+    "defense" : -0.14070855588218095
+  }, {
+    "idx" : 55,
+    "name" : "Colombia",
+    "attack" : 0.4188905905672507,
+    "defense" : -0.4792458611498907
+  }, {
+    "idx" : 56,
+    "name" : "Comoros",
+    "attack" : 0.026524654944925632,
+    "defense" : 0.0793640099044146
+  }, {
+    "idx" : 57,
+    "name" : "Congo",
+    "attack" : -0.22338339355079956,
+    "defense" : 0.2994286607860138
+  }, {
+    "idx" : 58,
+    "name" : "Cook Islands",
+    "attack" : -0.3604863941651243,
+    "defense" : 0.4360079183875836
+  }, {
+    "idx" : 59,
+    "name" : "Corsica",
+    "attack" : -0.11879791606798942,
+    "defense" : -0.1183589225854459
+  }, {
+    "idx" : 60,
+    "name" : "Costa Rica",
+    "attack" : 0.5093742937810198,
+    "defense" : -0.26702699854706374
+  }, {
+    "idx" : 61,
+    "name" : "Croatia",
+    "attack" : 0.4750531563587765,
+    "defense" : -0.3664824438854464
+  }, {
+    "idx" : 62,
+    "name" : "Cuba",
+    "attack" : -0.11881690155765899,
+    "defense" : 0.07600199106959343
+  }, {
+    "idx" : 63,
+    "name" : "Curaçao",
+    "attack" : 0.33247693654880817,
+    "defense" : -0.23226878754810923
+  }, {
+    "idx" : 64,
+    "name" : "Cyprus",
+    "attack" : -0.36959515288236816,
+    "defense" : 0.3913475375040528
+  }, {
+    "idx" : 65,
+    "name" : "Czech Republic",
+    "attack" : 0.24201580446051318,
+    "defense" : -0.10322275648431092
+  }, {
+    "idx" : 66,
+    "name" : "DR Congo",
+    "attack" : 0.06674462843709783,
+    "defense" : -0.4003703703417721
+  }, {
+    "idx" : 67,
+    "name" : "Denmark",
+    "attack" : 0.3079620398915133,
+    "defense" : -0.4134433310707529
+  }, {
+    "idx" : 68,
+    "name" : "Djibouti",
+    "attack" : -0.17401012021885842,
+    "defense" : 0.5874089381048683
+  }, {
+    "idx" : 69,
+    "name" : "Dominica",
+    "attack" : -0.24973987792977081,
+    "defense" : 0.3691522328731117
+  }, {
+    "idx" : 70,
+    "name" : "Dominican Republic",
+    "attack" : 0.40259287262314064,
+    "defense" : -0.042877100510373835
+  }, {
+    "idx" : 71,
+    "name" : "Donetsk PR",
+    "attack" : -0.11699242477212426,
+    "defense" : -0.12083704735644461
+  }, {
+    "idx" : 72,
+    "name" : "Délvidék",
+    "attack" : -0.109025692136208,
+    "defense" : -0.11382080984097674
+  }, {
+    "idx" : 73,
+    "name" : "East Turkestan",
+    "attack" : -0.09396523771956007,
+    "defense" : -0.08666777223820574
+  }, {
+    "idx" : 74,
+    "name" : "Ecuador",
+    "attack" : 0.12464377626615217,
+    "defense" : -0.5493600237570536
+  }, {
+    "idx" : 75,
+    "name" : "Egypt",
+    "attack" : 0.33018890819529,
+    "defense" : -0.44271709239303475
+  }, {
+    "idx" : 76,
+    "name" : "El Salvador",
+    "attack" : -0.05458541849564273,
+    "defense" : -0.22465239083584063
+  }, {
+    "idx" : 77,
+    "name" : "Elba Island",
+    "attack" : -0.04029645746346238,
+    "defense" : -0.11826705202999073
+  }, {
+    "idx" : 78,
+    "name" : "Ellan Vannin",
+    "attack" : -0.07535809807301054,
+    "defense" : -0.09746930741726562
+  }, {
+    "idx" : 79,
+    "name" : "England",
+    "attack" : 0.5800383230003454,
+    "defense" : -0.5207746041133211
+  }, {
+    "idx" : 80,
+    "name" : "Equatorial Guinea",
+    "attack" : -0.05003145031586301,
+    "defense" : -0.11924855080426455
+  }, {
+    "idx" : 81,
+    "name" : "Eritrea",
+    "attack" : -0.13066313814021685,
+    "defense" : -0.09493679666843652
+  }, {
+    "idx" : 82,
+    "name" : "Estonia",
+    "attack" : -0.2839151440256545,
+    "defense" : 0.2648512195516697
+  }, {
+    "idx" : 83,
+    "name" : "Eswatini",
+    "attack" : -0.11615945440036553,
+    "defense" : 0.1596971434070011
+  }, {
+    "idx" : 84,
+    "name" : "Ethiopia",
+    "attack" : -0.06728622344606588,
+    "defense" : 0.10855672313897365
+  }, {
+    "idx" : 85,
+    "name" : "Falkland Islands",
+    "attack" : -0.14772692048695518,
+    "defense" : 0.2680214879930901
+  }, {
+    "idx" : 86,
+    "name" : "Faroe Islands",
+    "attack" : -0.4456312050859193,
+    "defense" : 0.17591412571195936
+  }, {
+    "idx" : 87,
+    "name" : "Felvidék",
+    "attack" : -0.1153417106859682,
+    "defense" : -0.12130664120732396
+  }, {
+    "idx" : 88,
+    "name" : "Fiji",
+    "attack" : 0.38500123202375386,
+    "defense" : -0.026478713691406714
+  }, {
+    "idx" : 89,
+    "name" : "Finland",
+    "attack" : -0.05136600358555427,
+    "defense" : -0.008919297533932304
+  }, {
+    "idx" : 90,
+    "name" : "France",
+    "attack" : 0.6031453141996941,
+    "defense" : -0.47919941966106583
+  }, {
+    "idx" : 91,
+    "name" : "Franconia",
+    "attack" : -0.10439350169319361,
+    "defense" : -0.11204269738848859
+  }, {
+    "idx" : 92,
+    "name" : "French Guiana",
+    "attack" : 0.023886616508385652,
+    "defense" : 0.005416757889564911
+  }, {
+    "idx" : 93,
+    "name" : "Frøya",
+    "attack" : 0.006422470700727939,
+    "defense" : 0.13175511710803872
+  }, {
+    "idx" : 94,
+    "name" : "Gabon",
+    "attack" : 0.055134026244543104,
+    "defense" : -0.06695341299159432
+  }, {
+    "idx" : 95,
+    "name" : "Galicia",
+    "attack" : -0.1449748165395992,
+    "defense" : -0.10512118863128078
+  }, {
+    "idx" : 96,
+    "name" : "Gambia",
+    "attack" : 0.13152050571626966,
+    "defense" : 0.07428270706462092
+  }, {
+    "idx" : 97,
+    "name" : "Georgia",
+    "attack" : 0.19666804469523752,
+    "defense" : -0.11558096237339455
+  }, {
+    "idx" : 98,
+    "name" : "Germany",
+    "attack" : 0.6206046841542621,
+    "defense" : -0.26710426600352805
+  }, {
+    "idx" : 99,
+    "name" : "Ghana",
+    "attack" : 0.2065018972253967,
+    "defense" : -0.1388637075259758
+  }, {
+    "idx" : 100,
+    "name" : "Gibraltar",
+    "attack" : -0.6785121286124648,
+    "defense" : 0.7958196553793296
+  }, {
+    "idx" : 101,
+    "name" : "Gotland",
+    "attack" : -0.05489686344782579,
+    "defense" : -0.1130171919178031
+  }, {
+    "idx" : 102,
+    "name" : "Gozo",
+    "attack" : -0.11221524193875078,
+    "defense" : -0.2197129285754819
+  }, {
+    "idx" : 103,
+    "name" : "Greece",
+    "attack" : 0.18936237023712058,
+    "defense" : -0.4664973092684869
+  }, {
+    "idx" : 104,
+    "name" : "Greenland",
+    "attack" : -0.04158253675217718,
+    "defense" : 0.15211331407560413
+  }, {
+    "idx" : 105,
+    "name" : "Grenada",
+    "attack" : -0.09388517603826436,
+    "defense" : 0.30787919329625035
+  }, {
+    "idx" : 106,
+    "name" : "Guadeloupe",
+    "attack" : 0.15442320960041503,
+    "defense" : -0.06566751172735824
+  }, {
+    "idx" : 107,
+    "name" : "Guam",
+    "attack" : -0.29145497888125965,
+    "defense" : 0.429180077228523
+  }, {
+    "idx" : 108,
+    "name" : "Guatemala",
+    "attack" : 0.30709385520534965,
+    "defense" : -0.19734259318593533
+  }, {
+    "idx" : 109,
+    "name" : "Guernsey",
+    "attack" : 0.05048867240543706,
+    "defense" : -0.19761818917486762
+  }, {
+    "idx" : 110,
+    "name" : "Guinea",
+    "attack" : 0.19539562319182277,
+    "defense" : -0.14237519631260193
+  }, {
+    "idx" : 111,
+    "name" : "Guinea-Bissau",
+    "attack" : -0.2056790782191265,
+    "defense" : 0.01097797197540431
+  }, {
+    "idx" : 112,
+    "name" : "Guyana",
+    "attack" : 0.277089672846219,
+    "defense" : 0.22272982085382764
+  }, {
+    "idx" : 113,
+    "name" : "Haiti",
+    "attack" : 0.6738342443261128,
+    "defense" : -0.09662676510170899
+  }, {
+    "idx" : 114,
+    "name" : "Hitra",
+    "attack" : -0.08079165635118792,
+    "defense" : 0.018650922608455238
+  }, {
+    "idx" : 115,
+    "name" : "Hmong",
+    "attack" : 0.016252453030842728,
+    "defense" : 0.17451967694597345
+  }, {
+    "idx" : 116,
+    "name" : "Honduras",
+    "attack" : 0.24735782611226145,
+    "defense" : -0.11615964768831757
+  }, {
+    "idx" : 117,
+    "name" : "Hong Kong",
+    "attack" : -0.09062238526742762,
+    "defense" : 0.007915256297849494
+  }, {
+    "idx" : 118,
+    "name" : "Hungary",
+    "attack" : 0.0311524150537125,
+    "defense" : -0.11093063317008066
+  }, {
+    "idx" : 119,
+    "name" : "Iceland",
+    "attack" : 0.12066212476146387,
+    "defense" : 0.13881584728654323
+  }, {
+    "idx" : 120,
+    "name" : "India",
+    "attack" : -0.3066323822126998,
+    "defense" : -0.11638999255376677
+  }, {
+    "idx" : 121,
+    "name" : "Indonesia",
+    "attack" : 0.12450217768384296,
+    "defense" : 0.10949676147728564
+  }, {
+    "idx" : 122,
+    "name" : "Iran",
+    "attack" : 0.6775256511791449,
+    "defense" : -0.489384784566449
+  }, {
+    "idx" : 123,
+    "name" : "Iraq",
+    "attack" : 0.24465243034638126,
+    "defense" : -0.313060373055332
+  }, {
+    "idx" : 124,
+    "name" : "Iraqi Kurdistan",
+    "attack" : -0.09985429384901712,
+    "defense" : -0.12442906511272406
+  }, {
+    "idx" : 125,
+    "name" : "Isle of Man",
+    "attack" : 0.2354726429407297,
+    "defense" : -0.06090175741247507
+  }, {
+    "idx" : 126,
+    "name" : "Isle of Wight",
+    "attack" : 0.031003660729338297,
+    "defense" : -0.13746754995510824
+  }, {
+    "idx" : 127,
+    "name" : "Israel",
+    "attack" : 0.219423375016796,
+    "defense" : 0.14419541087893
+  }, {
+    "idx" : 128,
+    "name" : "Italy",
+    "attack" : 0.36652611580597577,
+    "defense" : -0.3199898000816139
+  }, {
+    "idx" : 129,
+    "name" : "Ivory Coast",
+    "attack" : 0.21611228626419957,
+    "defense" : -0.45512739843256406
+  }, {
+    "idx" : 130,
+    "name" : "Jamaica",
+    "attack" : 0.2442621905430424,
+    "defense" : -0.1795633272149746
+  }, {
+    "idx" : 131,
+    "name" : "Japan",
+    "attack" : 0.8019711045340773,
+    "defense" : -0.5737750048185751
+  }, {
+    "idx" : 132,
+    "name" : "Jersey",
+    "attack" : 0.5364717647720885,
+    "defense" : -0.20943587706416944
+  }, {
+    "idx" : 133,
+    "name" : "Jordan",
+    "attack" : 0.3904959867622998,
+    "defense" : -0.27567495283408927
+  }, {
+    "idx" : 134,
+    "name" : "Kabylia",
+    "attack" : -0.09693509925535014,
+    "defense" : -0.044601173961085504
+  }, {
+    "idx" : 135,
+    "name" : "Kazakhstan",
+    "attack" : -0.23012236609581188,
+    "defense" : 0.24487360906343567
+  }, {
+    "idx" : 136,
+    "name" : "Kenya",
+    "attack" : -0.022000214604014228,
+    "defense" : -0.044483046647861166
+  }, {
+    "idx" : 137,
+    "name" : "Kernow",
+    "attack" : -0.07472210668204456,
+    "defense" : -0.11476043040043243
+  }, {
+    "idx" : 138,
+    "name" : "Kosovo",
+    "attack" : 0.07420491277169738,
+    "defense" : -0.07842535324070561
+  }, {
+    "idx" : 139,
+    "name" : "Kuwait",
+    "attack" : -0.0833601834695345,
+    "defense" : 0.03636139205681065
+  }, {
+    "idx" : 140,
+    "name" : "Kyrgyzstan",
+    "attack" : 0.10629552005033671,
+    "defense" : 0.038848660193964504
+  }, {
+    "idx" : 141,
+    "name" : "Kárpátalja",
+    "attack" : -0.015215803199501833,
+    "defense" : -0.10622753296845817
+  }, {
+    "idx" : 142,
+    "name" : "Laos",
+    "attack" : -0.3044617915659231,
+    "defense" : 0.6167628923619245
+  }, {
+    "idx" : 143,
+    "name" : "Latvia",
+    "attack" : -0.3768628386337702,
+    "defense" : 0.2032274573680804
+  }, {
+    "idx" : 144,
+    "name" : "Lebanon",
+    "attack" : -0.07274536504833215,
+    "defense" : -0.22251325060691862
+  }, {
+    "idx" : 145,
+    "name" : "Lesotho",
+    "attack" : -0.1973249445165557,
+    "defense" : 0.031655978181884294
+  }, {
+    "idx" : 146,
+    "name" : "Liberia",
+    "attack" : -0.26636097869029446,
+    "defense" : 0.024278099129024667
+  }, {
+    "idx" : 147,
+    "name" : "Libya",
+    "attack" : -0.0976072353586141,
+    "defense" : -0.04716100571286404
+  }, {
+    "idx" : 148,
+    "name" : "Liechtenstein",
+    "attack" : -0.9011794912407718,
+    "defense" : 0.6400377250726447
+  }, {
+    "idx" : 149,
+    "name" : "Lithuania",
+    "attack" : -0.4580394093188487,
+    "defense" : 0.2440877435902161
+  }, {
+    "idx" : 150,
+    "name" : "Luhansk PR",
+    "attack" : -0.10784829742985226,
+    "defense" : -0.10396167816450091
+  }, {
+    "idx" : 151,
+    "name" : "Luxembourg",
+    "attack" : -0.2708985380931886,
+    "defense" : 0.13456983416696616
+  }, {
+    "idx" : 152,
+    "name" : "Macau",
+    "attack" : -0.5271048240738507,
+    "defense" : 0.3456290927577766
+  }, {
+    "idx" : 153,
+    "name" : "Madagascar",
+    "attack" : -0.08885088902929568,
+    "defense" : 0.05370563597869303
+  }, {
+    "idx" : 154,
+    "name" : "Malawi",
+    "attack" : -0.21889895745089083,
+    "defense" : -0.024080715528114593
+  }, {
+    "idx" : 155,
+    "name" : "Malaysia",
+    "attack" : 0.10991827236442016,
+    "defense" : 0.027414132121247693
+  }, {
+    "idx" : 156,
+    "name" : "Maldives",
+    "attack" : -0.29461375875086565,
+    "defense" : 0.4657669411545167
+  }, {
+    "idx" : 157,
+    "name" : "Mali",
+    "attack" : 0.20320550627480616,
+    "defense" : -0.5364553623146442
+  }, {
+    "idx" : 158,
+    "name" : "Malta",
+    "attack" : -0.555641614958867,
+    "defense" : 0.356320495068295
+  }, {
+    "idx" : 159,
+    "name" : "Mapuche",
+    "attack" : -0.07786229944629895,
+    "defense" : -0.1072063302457217
+  }, {
+    "idx" : 160,
+    "name" : "Marshall Islands",
+    "attack" : -0.11823613102020845,
+    "defense" : -0.11823613102009248
+  }, {
+    "idx" : 161,
+    "name" : "Martinique",
+    "attack" : -0.03238618891990762,
+    "defense" : -0.06471284834303073
+  }, {
+    "idx" : 162,
+    "name" : "Matabeleland",
+    "attack" : -0.13081598444898618,
+    "defense" : -0.07951014671400528
+  }, {
+    "idx" : 163,
+    "name" : "Maule Sur",
+    "attack" : -0.1089717448201242,
+    "defense" : -0.17011933876499738
+  }, {
+    "idx" : 164,
+    "name" : "Mauritania",
+    "attack" : -0.22250815248951875,
+    "defense" : -0.042156887826208286
+  }, {
+    "idx" : 165,
+    "name" : "Mauritius",
+    "attack" : -0.28841809795098083,
+    "defense" : 0.18570170534192917
+  }, {
+    "idx" : 166,
+    "name" : "Mayotte",
+    "attack" : -0.17378190980080194,
+    "defense" : -0.19423893801340797
+  }, {
+    "idx" : 167,
+    "name" : "Menorca",
+    "attack" : 5.54774712763253E-4,
+    "defense" : 0.003876271112865461
+  }, {
+    "idx" : 168,
+    "name" : "Mexico",
+    "attack" : 0.47491610190861516,
+    "defense" : -0.5272750496551397
+  }, {
+    "idx" : 169,
+    "name" : "Moldova",
+    "attack" : -0.3686252171692931,
+    "defense" : 0.29154653399383973
+  }, {
+    "idx" : 170,
+    "name" : "Monaco",
+    "attack" : -0.11999887198591891,
+    "defense" : -0.12086923453433476
+  }, {
+    "idx" : 171,
+    "name" : "Mongolia",
+    "attack" : -0.4998977744305736,
+    "defense" : 0.4339010756656019
+  }, {
+    "idx" : 172,
+    "name" : "Montenegro",
+    "attack" : -0.18756093372972646,
+    "defense" : 0.014271865185432619
+  }, {
+    "idx" : 173,
+    "name" : "Montserrat",
+    "attack" : -0.19258204208440285,
+    "defense" : 0.28438142821928136
+  }, {
+    "idx" : 174,
+    "name" : "Morocco",
+    "attack" : 0.5761246213108226,
+    "defense" : -0.5679948458369337
+  }, {
+    "idx" : 175,
+    "name" : "Mozambique",
+    "attack" : 0.07941230836158332,
+    "defense" : 0.056907014374924826
+  }, {
+    "idx" : 176,
+    "name" : "Myanmar",
+    "attack" : -0.29576218910419433,
+    "defense" : 0.6040022080285301
+  }, {
+    "idx" : 177,
+    "name" : "Namibia",
+    "attack" : -0.10196799935619762,
+    "defense" : -0.11640860880998787
+  }, {
+    "idx" : 178,
+    "name" : "Nepal",
+    "attack" : -0.4530989789844948,
+    "defense" : 0.3852495490526375
+  }, {
+    "idx" : 179,
+    "name" : "Netherlands",
+    "attack" : 0.6522587327548545,
+    "defense" : -0.3119867600568357
+  }, {
+    "idx" : 180,
+    "name" : "New Caledonia",
+    "attack" : 0.44662435886738866,
+    "defense" : -0.15786010234798883
+  }, {
+    "idx" : 181,
+    "name" : "New Zealand",
+    "attack" : 0.7482842110959156,
+    "defense" : -0.5080664927691969
+  }, {
+    "idx" : 182,
+    "name" : "Nicaragua",
+    "attack" : 0.08495812325357734,
+    "defense" : -0.22542776387635627
+  }, {
+    "idx" : 183,
+    "name" : "Niger",
+    "attack" : 0.11668821365751789,
+    "defense" : 0.05940970589956562
+  }, {
+    "idx" : 184,
+    "name" : "Nigeria",
+    "attack" : 0.27375764689185567,
+    "defense" : -0.2424263981857792
+  }, {
+    "idx" : 185,
+    "name" : "North Korea",
+    "attack" : 0.15714365624901955,
+    "defense" : -0.02112815069068856
+  }, {
+    "idx" : 186,
+    "name" : "North Macedonia",
+    "attack" : 0.005502816796788369,
+    "defense" : -0.1014620248817577
+  }, {
+    "idx" : 187,
+    "name" : "Northern Cyprus",
+    "attack" : 0.024626809627940772,
+    "defense" : -0.13466803232802207
+  }, {
+    "idx" : 188,
+    "name" : "Northern Ireland",
+    "attack" : -0.09977521331170405,
+    "defense" : -0.08516850281268513
+  }, {
+    "idx" : 189,
+    "name" : "Northern Mariana Islands",
+    "attack" : -0.16228060587613208,
+    "defense" : 0.6311492688910486
+  }, {
+    "idx" : 190,
+    "name" : "Norway",
+    "attack" : 0.44382221956076645,
+    "defense" : -0.23906913751907385
+  }, {
+    "idx" : 191,
+    "name" : "Oman",
+    "attack" : 0.11764274281882463,
+    "defense" : -0.28635387057732764
+  }, {
+    "idx" : 192,
+    "name" : "Orkney",
+    "attack" : -0.018933387818448354,
+    "defense" : 0.02834296566204356
+  }, {
+    "idx" : 193,
+    "name" : "Padania",
+    "attack" : 0.06984360492712897,
+    "defense" : -0.1343330582752705
+  }, {
+    "idx" : 194,
+    "name" : "Pakistan",
+    "attack" : -0.6294599525335027,
+    "defense" : 0.5345129568350644
+  }, {
+    "idx" : 195,
+    "name" : "Palestine",
+    "attack" : 0.2149685367799239,
+    "defense" : -0.15049114139783365
+  }, {
+    "idx" : 196,
+    "name" : "Panama",
+    "attack" : 0.49333157534949446,
+    "defense" : -0.2500911550442792
+  }, {
+    "idx" : 197,
+    "name" : "Panjab",
+    "attack" : 0.028625033145704956,
+    "defense" : -0.10321961661658907
+  }, {
+    "idx" : 198,
+    "name" : "Papua New Guinea",
+    "attack" : 0.10610355752158591,
+    "defense" : 0.15344086995625617
+  }, {
+    "idx" : 199,
+    "name" : "Paraguay",
+    "attack" : -0.0016130527051916104,
+    "defense" : -0.3180390680989391
+  }, {
+    "idx" : 200,
+    "name" : "Parishes of Jersey",
+    "attack" : -0.04377147227176727,
+    "defense" : -0.10841407633909256
+  }, {
+    "idx" : 201,
+    "name" : "Peru",
+    "attack" : -0.15272595893675484,
+    "defense" : -0.375715510420322
+  }, {
+    "idx" : 202,
+    "name" : "Philippines",
+    "attack" : -0.08233054021519517,
+    "defense" : 0.1809115267509291
+  }, {
+    "idx" : 203,
+    "name" : "Poland",
+    "attack" : 0.21526820886579537,
+    "defense" : -0.05813268300303741
+  }, {
+    "idx" : 204,
+    "name" : "Portugal",
+    "attack" : 0.6725193894815054,
+    "defense" : -0.5042899554254997
+  }, {
+    "idx" : 205,
+    "name" : "Puerto Rico",
+    "attack" : 0.17282961810223316,
+    "defense" : 0.10238941843313991
+  }, {
+    "idx" : 206,
+    "name" : "Qatar",
+    "attack" : 0.39154621037926995,
+    "defense" : -9.6283987452159E-4
+  }, {
+    "idx" : 207,
+    "name" : "Raetia",
+    "attack" : 0.22760710120735173,
+    "defense" : 0.03715611533835754
+  }, {
+    "idx" : 208,
+    "name" : "Republic of Ireland",
+    "attack" : -0.13719764737266202,
+    "defense" : -0.1621625123538717
+  }, {
+    "idx" : 209,
+    "name" : "Romani people",
+    "attack" : -0.11899784180716066,
+    "defense" : -0.1059571345057091
+  }, {
+    "idx" : 210,
+    "name" : "Romania",
+    "attack" : 0.1240955953032214,
+    "defense" : -0.22799986462537458
+  }, {
+    "idx" : 211,
+    "name" : "Rouet-Provence",
+    "attack" : -0.11823613102020845,
+    "defense" : -0.11823613102009248
+  }, {
+    "idx" : 212,
+    "name" : "Russia",
+    "attack" : 0.3898710482736535,
+    "defense" : -0.30509394375477955
+  }, {
+    "idx" : 213,
+    "name" : "Rwanda",
+    "attack" : -0.3067231771225934,
+    "defense" : -0.15269845409447402
+  }, {
+    "idx" : 214,
+    "name" : "Ryūkyū",
+    "attack" : -0.1197558002236522,
+    "defense" : -0.1031799996544755
+  }, {
+    "idx" : 215,
+    "name" : "Réunion",
+    "attack" : -0.11325440065790333,
+    "defense" : -0.16361504381614211
+  }, {
+    "idx" : 216,
+    "name" : "Saare County",
+    "attack" : -0.08845116229401592,
+    "defense" : -0.09440555677817147
+  }, {
+    "idx" : 217,
+    "name" : "Saint Barthélemy",
+    "attack" : -0.051687850834390564,
+    "defense" : -0.06744609322485602
+  }, {
+    "idx" : 218,
+    "name" : "Saint Helena",
+    "attack" : -0.1761902054996415,
+    "defense" : 0.5045498092514669
+  }, {
+    "idx" : 219,
+    "name" : "Saint Kitts and Nevis",
+    "attack" : -0.16109948877338295,
+    "defense" : 0.42463987420455124
+  }, {
+    "idx" : 220,
+    "name" : "Saint Lucia",
+    "attack" : -0.178659180557209,
+    "defense" : 0.2438752501833917
+  }, {
+    "idx" : 221,
+    "name" : "Saint Martin",
+    "attack" : 0.1921627146372355,
+    "defense" : 0.22985829686444384
+  }, {
+    "idx" : 222,
+    "name" : "Saint Vincent and the Grenadines",
+    "attack" : 0.06584008803418404,
+    "defense" : 0.36210363706537657
+  }, {
+    "idx" : 223,
+    "name" : "Samoa",
+    "attack" : -0.035645288503103424,
+    "defense" : 0.4582876351266492
+  }, {
+    "idx" : 224,
+    "name" : "San Marino",
+    "attack" : -0.8071099533055788,
+    "defense" : 0.8154043039858531
+  }, {
+    "idx" : 225,
+    "name" : "Saudi Arabia",
+    "attack" : 0.148400531795747,
+    "defense" : -0.39124431193210557
+  }, {
+    "idx" : 226,
+    "name" : "Scotland",
+    "attack" : 0.11788735306747591,
+    "defense" : -0.16137627540362398
+  }, {
+    "idx" : 227,
+    "name" : "Senegal",
+    "attack" : 0.32893649695504934,
+    "defense" : -0.5480841671234414
+  }, {
+    "idx" : 228,
+    "name" : "Serbia",
+    "attack" : 0.24099422271844198,
+    "defense" : -0.3552733020880677
+  }, {
+    "idx" : 229,
+    "name" : "Seychelles",
+    "attack" : -0.43956907500344516,
+    "defense" : 0.7542127744979313
+  }, {
+    "idx" : 230,
+    "name" : "Shetland",
+    "attack" : 0.23858466821664961,
+    "defense" : 0.05522976658372134
+  }, {
+    "idx" : 231,
+    "name" : "Sierra Leone",
+    "attack" : 0.013069244705384111,
+    "defense" : 0.1097984204748159
+  }, {
+    "idx" : 232,
+    "name" : "Singapore",
+    "attack" : -0.1375055233057574,
+    "defense" : 0.34862353358886167
+  }, {
+    "idx" : 233,
+    "name" : "Sint Maarten",
+    "attack" : 0.02440473666375866,
+    "defense" : 0.6253699002630219
+  }, {
+    "idx" : 234,
+    "name" : "Slovakia",
+    "attack" : 0.04073242488944145,
+    "defense" : -0.2144597570078328
+  }, {
+    "idx" : 235,
+    "name" : "Slovenia",
+    "attack" : 0.023363177944311593,
+    "defense" : -0.30314825056994965
+  }, {
+    "idx" : 236,
+    "name" : "Solomon Islands",
+    "attack" : 0.22373407153289457,
+    "defense" : -0.02617760672234707
+  }, {
+    "idx" : 237,
+    "name" : "Somalia",
+    "attack" : -0.27238201287560837,
+    "defense" : 0.21747314892607433
+  }, {
+    "idx" : 238,
+    "name" : "Somaliland",
+    "attack" : -0.08881442345565668,
+    "defense" : -0.06653265452871186
+  }, {
+    "idx" : 239,
+    "name" : "South Africa",
+    "attack" : 0.15276973738811625,
+    "defense" : -0.24629139610275194
+  }, {
+    "idx" : 240,
+    "name" : "South Korea",
+    "attack" : 0.5775775791372927,
+    "defense" : -0.4352666766199519
+  }, {
+    "idx" : 241,
+    "name" : "South Ossetia",
+    "attack" : -0.08210047699688836,
+    "defense" : -0.054095968332637884
+  }, {
+    "idx" : 242,
+    "name" : "South Sudan",
+    "attack" : -0.3009592706737276,
+    "defense" : 0.22961602630537267
+  }, {
+    "idx" : 243,
+    "name" : "Spain",
+    "attack" : 0.8054304788425509,
+    "defense" : -0.46858814925708264
+  }, {
+    "idx" : 244,
+    "name" : "Sri Lanka",
+    "attack" : -0.44028804722092596,
+    "defense" : 0.17247614771457062
+  }, {
+    "idx" : 245,
+    "name" : "Sudan",
+    "attack" : -0.15221456969392147,
+    "defense" : -0.12381558680393474
+  }, {
+    "idx" : 246,
+    "name" : "Suriname",
+    "attack" : 0.12349229511363567,
+    "defense" : -0.23535731183780031
+  }, {
+    "idx" : 247,
+    "name" : "Surrey",
+    "attack" : -0.1120045388347498,
+    "defense" : -0.1189517723973006
+  }, {
+    "idx" : 248,
+    "name" : "Sweden",
+    "attack" : 0.4027640755500371,
+    "defense" : -0.20004322245487355
+  }, {
+    "idx" : 249,
+    "name" : "Switzerland",
+    "attack" : 0.3938429435814495,
+    "defense" : -0.19556832574097854
+  }, {
+    "idx" : 250,
+    "name" : "Syria",
+    "attack" : 0.15778289122731837,
+    "defense" : -0.15746529565821146
+  }, {
+    "idx" : 251,
+    "name" : "Székely Land",
+    "attack" : 0.24931402156259738,
+    "defense" : 0.05009348296664569
+  }, {
+    "idx" : 252,
+    "name" : "Sápmi",
+    "attack" : -0.08193479753674515,
+    "defense" : -0.0022719474951751278
+  }, {
+    "idx" : 253,
+    "name" : "São Tomé and Príncipe",
+    "attack" : -0.32046936053048963,
+    "defense" : 0.5045797298463869
+  }, {
+    "idx" : 254,
+    "name" : "Tahiti",
+    "attack" : 0.15679654272306248,
+    "defense" : -0.11251437406572726
+  }, {
+    "idx" : 255,
+    "name" : "Taiwan",
+    "attack" : -0.11375237840178723,
+    "defense" : 0.427487496985763
+  }, {
+    "idx" : 256,
+    "name" : "Tajikistan",
+    "attack" : -0.07383253821638205,
+    "defense" : -0.07821243413040022
+  }, {
+    "idx" : 257,
+    "name" : "Tamil Eelam",
+    "attack" : 0.166966893787,
+    "defense" : -0.05206639031553885
+  }, {
+    "idx" : 258,
+    "name" : "Tanzania",
+    "attack" : -0.317427471465708,
+    "defense" : -0.22914117625391137
+  }, {
+    "idx" : 259,
+    "name" : "Thailand",
+    "attack" : 0.28853677678780937,
+    "defense" : -0.06888854038391883
+  }, {
+    "idx" : 260,
+    "name" : "Tibet",
+    "attack" : 0.037296236277088286,
+    "defense" : 0.25656237652753827
+  }, {
+    "idx" : 261,
+    "name" : "Timor-Leste",
+    "attack" : -0.41856820496683717,
+    "defense" : 0.6263919207116234
+  }, {
+    "idx" : 262,
+    "name" : "Togo",
+    "attack" : -0.08448881117289518,
+    "defense" : -0.01234835176565654
+  }, {
+    "idx" : 263,
+    "name" : "Tonga",
+    "attack" : -0.17940989943726798,
+    "defense" : 0.6386357385092488
+  }, {
+    "idx" : 264,
+    "name" : "Trinidad and Tobago",
+    "attack" : 0.25686038394264576,
+    "defense" : 0.12919577118837897
+  }, {
+    "idx" : 265,
+    "name" : "Tunisia",
+    "attack" : 0.12420662855417697,
+    "defense" : -0.5452082234909609
+  }, {
+    "idx" : 266,
+    "name" : "Turkey",
+    "attack" : 0.3487419682525206,
+    "defense" : -0.1345067714112051
+  }, {
+    "idx" : 267,
+    "name" : "Turkmenistan",
+    "attack" : -0.008158310299078032,
+    "defense" : 0.07978396284656314
+  }, {
+    "idx" : 268,
+    "name" : "Turks and Caicos Islands",
+    "attack" : -0.5222332623003723,
+    "defense" : 0.835416959058363
+  }, {
+    "idx" : 269,
+    "name" : "Tuvalu",
+    "attack" : -0.048966904508790564,
+    "defense" : 0.6390916442584285
+  }, {
+    "idx" : 270,
+    "name" : "Two Sicilies",
+    "attack" : -0.1522448532588325,
+    "defense" : 0.18694071160603828
+  }, {
+    "idx" : 271,
+    "name" : "Uganda",
+    "attack" : -0.16043456865383413,
+    "defense" : -0.15506986693070055
+  }, {
+    "idx" : 272,
+    "name" : "Ukraine",
+    "attack" : 0.31356544321112406,
+    "defense" : -0.1597122109100252
+  }, {
+    "idx" : 273,
+    "name" : "United Arab Emirates",
+    "attack" : 0.24664259699005806,
+    "defense" : -0.31809450894223795
+  }, {
+    "idx" : 274,
+    "name" : "United Koreans in Japan",
+    "attack" : -0.09720625810122899,
+    "defense" : -0.12047515910833642
+  }, {
+    "idx" : 275,
+    "name" : "United States",
+    "attack" : 0.4395414047229216,
+    "defense" : -0.45692006293671633
+  }, {
+    "idx" : 276,
+    "name" : "United States Virgin Islands",
+    "attack" : -0.5748860687308605,
+    "defense" : 0.6868994783465704
+  }, {
+    "idx" : 277,
+    "name" : "Uruguay",
+    "attack" : 0.3065630208238421,
+    "defense" : -0.5408422337780135
+  }, {
+    "idx" : 278,
+    "name" : "Uzbekistan",
+    "attack" : 0.3416040325997415,
+    "defense" : -0.5354599563935958
+  }, {
+    "idx" : 279,
+    "name" : "Vanuatu",
+    "attack" : 0.0378272454034016,
+    "defense" : 0.32101519996678984
+  }, {
+    "idx" : 280,
+    "name" : "Vatican City",
+    "attack" : -0.1043779687302193,
+    "defense" : -0.08439149115101663
+  }, {
+    "idx" : 281,
+    "name" : "Venezuela",
+    "attack" : 0.12306205604147291,
+    "defense" : -0.17590838582139376
+  }, {
+    "idx" : 282,
+    "name" : "Vietnam",
+    "attack" : 0.16158608123070808,
+    "defense" : -0.08166006349566739
+  }, {
+    "idx" : 283,
+    "name" : "Wales",
+    "attack" : 0.09272747553022932,
+    "defense" : -0.2201780960678921
+  }, {
+    "idx" : 284,
+    "name" : "West Papua",
+    "attack" : -0.1113846712819259,
+    "defense" : -0.0838265911751568
+  }, {
+    "idx" : 285,
+    "name" : "Western Armenia",
+    "attack" : 0.0032679923738314237,
+    "defense" : -0.0907090521985534
+  }, {
+    "idx" : 286,
+    "name" : "Western Isles",
+    "attack" : -0.09081162795066842,
+    "defense" : -0.04147983277101821
+  }, {
+    "idx" : 287,
+    "name" : "Yemen",
+    "attack" : -0.1900260752198005,
+    "defense" : 0.17405027337766385
+  }, {
+    "idx" : 288,
+    "name" : "Ynys Môn",
+    "attack" : 0.21912579472450627,
+    "defense" : -0.01521928708662263
+  }, {
+    "idx" : 289,
+    "name" : "Yorkshire",
+    "attack" : -0.05756698509711174,
+    "defense" : -0.10930473739842432
+  }, {
+    "idx" : 290,
+    "name" : "Yoruba Nation",
+    "attack" : -0.1379583482952347,
+    "defense" : -0.10709467982738921
+  }, {
+    "idx" : 291,
+    "name" : "Zambia",
+    "attack" : 0.16546241429845773,
+    "defense" : -0.03091444269521825
+  }, {
+    "idx" : 292,
+    "name" : "Zanzibar",
+    "attack" : -0.14138526537620968,
+    "defense" : -0.24030008972522904
+  }, {
+    "idx" : 293,
+    "name" : "Zimbabwe",
+    "attack" : -0.033703319350469774,
+    "defense" : -0.08010898802974195
+  }, {
+    "idx" : 294,
+    "name" : "Åland Islands",
+    "attack" : -0.17387414289582262,
+    "defense" : 0.07030221413676083
+  } ]
+}
